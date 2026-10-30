@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết đơn hàng - Admin EXED</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+<body>
+    <header class="admin-header">
+        <div class="admin-container">
+            <div class="logo">
+                <img src="../images/logo_admin.png" alt="EXED">
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <div class="admin-actions">
+                <button class="notification-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="badge">5</span>
+                </button>
+                <div class="admin-profile">
+                    <img src="../images/rose.jpg" alt="Admin">
+                    <span>Admin User</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin-campaigns.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                    <span>Quản lý chiến dịch</span>
+                </a>
+                <a href="admin-customers.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Quản lý khách hàng</span>
+                </a>
+                <a href="admin-orders.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+                <a href="admin-products.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+                <a href="admin-artists.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <polyline points="17 11 19 13 23 9"></polyline>
+                    </svg>
+                    <span>Nghệ sĩ Collab</span>
+                </a>
+                <a href="admin-settings.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>Cấu hình hệ thống</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <div class="page-header">
+                <div>
+                    <h1>CHI TIẾT ĐƠN HÀNG</h1>
+                    <p style="font-size:13px;color:rgba(95,7,4,.5);font-weight:600;margin-top:2px;" id="order-subtitle">—</p>
+                </div>
+                <div style="display:flex;gap:10px;">
+                    <button class="btn-back" onclick="history.back()">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="19" y1="12" x2="5" y2="12"></line>
+                            <polyline points="12 19 5 12 12 5"></polyline>
+                        </svg>
+                        Quay lại
+                    </button>
+                </div>
+            </div>
+
+            <!-- Hàng 1: Thông tin đơn + Khách hàng -->
+            <div class="order-detail-row">
+
+                <!-- Thông tin đơn hàng -->
+                <div class="content-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="settings-section-title">Thông tin đơn hàng</h2>
+                            <p class="settings-section-desc">Chiến dịch và sản phẩm đặt mua</p>
+                        </div>
+                    </div>
+                    <div class="order-product-row">
+                        <img src="../images/banner.png" alt="Product" class="order-product-img" id="order-product-img">
+                        <div class="order-product-info">
+                            <p class="order-product-name" id="o-tenCD">—</p>
+                            <p class="order-product-meta" id="o-variants">—</p>
+                            <p class="order-product-meta" id="o-moc">—</p>
+                        </div>
+                    </div>
+                    <div class="order-price-breakdown">
+                        <div class="order-price-row">
+                            <span>Giá / SL</span>
+                            <span id="o-giaSP">—</span>
+                        </div>
+                        <div class="order-price-row">
+                            <span>Phí tham gia</span>
+                            <span id="o-phi">—</span>
+                        </div>
+                        <div class="order-price-row order-price-total">
+                            <span>Tổng thanh toán</span>
+                            <span id="o-tong">—</span>
+                        </div>
+                        <div class="order-price-row" style="color:#4caf50;">
+                            <span>Hoàn tiền (nếu cược sai)</span>
+                            <span id="o-hoan">—</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Thông tin khách hàng -->
+                <div class="content-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="settings-section-title">Khách hàng</h2>
+                            <p class="settings-section-desc">Thông tin người đặt hàng</p>
+                        </div>
+                    </div>
+                    <div class="order-customer-info">
+                        <img src="../images/rose.jpg" alt="Customer" class="order-customer-avatar" id="o-cusAvatar">
+                        <div>
+                            <p class="order-customer-name" id="o-cusName">—</p>
+                            <p class="order-customer-id" id="o-cusId">—</p>
+                        </div>
+                    </div>
+                    <div class="order-info-list">
+                        <div class="order-info-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                <polyline points="22,6 12,13 2,6"></polyline>
+                            </svg>
+                            <span id="o-cusEmail">—</span>
+                        </div>
+                        <div class="order-info-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.56 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                            </svg>
+                            <span id="o-cusPhone">—</span>
+                        </div>
+                        <div class="order-info-item">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                <circle cx="12" cy="10" r="3"></circle>
+                            </svg>
+                            <span id="o-cusAddress">—</span>
+                        </div>
+                    </div>
+                    <a href="admin-customer-detail.html" id="o-cusLink" class="btn-secondary-admin" style="margin-top:16px;text-decoration:none;justify-content:center;">
+                        Xem hồ sơ khách hàng →
+                    </a>
+                </div>
+
+            </div>
+
+            <!-- Hàng 2: Trạng thái + Vận chuyển -->
+            <div class="order-detail-row">
+
+                <!-- Cập nhật trạng thái -->
+                <div class="content-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="23 4 23 10 17 10"></polyline>
+                                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="settings-section-title">Trạng thái đơn hàng</h2>
+                            <p class="settings-section-desc">Cập nhật tiến trình xử lý</p>
+                        </div>
+                    </div>
+                    <!-- Timeline -->
+                    <div class="order-timeline" id="o-timeline">
+                        <div class="timeline-item done" data-step="dat">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Đã đặt hàng</p>
+                                <p class="timeline-time" id="t-dat">—</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-step="thanhtoan">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Đã thanh toán</p>
+                                <p class="timeline-time" id="t-thanhtoan">—</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-step="chuanbi">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Đang chuẩn bị</p>
+                                <p class="timeline-time" id="t-chuanbi">Chờ tạo phiếu giao</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-step="danggiao">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Đang giao</p>
+                                <p class="timeline-time" id="t-danggiao">—</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item" data-step="dagiao">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <p class="timeline-title">Đã giao hàng</p>
+                                <p class="timeline-time" id="t-dagiao">—</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section điều khiển trạng thái: hiển thị động tuỳ tình trạng -->
+                    <div id="o-controls" style="margin-top:16px;"></div>
+                </div>
+
+                <!-- Thông tin vận chuyển -->
+                <div class="content-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="1" y="3" width="15" height="13"></rect>
+                                <path d="M16 8h4l3 3v5h-7V8z"></path>
+                                <circle cx="5.5" cy="18.5" r="2.5"></circle>
+                                <circle cx="18.5" cy="18.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="settings-section-title">Phiếu giao hàng</h2>
+                            <p class="settings-section-desc">Thông tin giao hàng &amp; chi tiết SP</p>
+                        </div>
+                    </div>
+                    <div id="o-shipping">
+                        <p style="text-align:center;padding:20px;color:#888;">Đang tải...</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <script src="../js/admin-api.js"></script>
+    <script>
+    const params = new URLSearchParams(window.location.search);
+    const dkId = params.get('id');
+
+    /** Trạng thái tổng đơn (DangKyChienDich) — chỉ đọc, set vào timeline */
+    let currentDk = null;
+    /** Phiếu giao hàng (DonHang) — có thể null nếu chưa tạo */
+    let currentDh = null;
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        await initAdminHeader();
+        if (!dkId) { showToast('Thiếu mã đăng ký', 'error'); return; }
+
+        await loadDangKy();
+        await loadGiaoHang();
+        renderTimeline();
+        renderControls();
+    });
+
+    /** Load đăng ký + chiến dịch + khách hàng + thanh toán */
+    async function loadDangKy() {
+        try {
+            const r = await adminApi.getDonHangById(dkId);
+            if (!r.success) { showToast(r.message, 'error'); return; }
+            currentDk = r.data;
+            const dk = currentDk;
+            const cd = dk.chienDich || {};
+            const nd = dk.nguoiDung || {};
+            const tt = dk.thanhToan || {};
+            const bg = dk.bangGiaBacThang || {};
+
+            // Header subtitle
+            document.getElementById('order-subtitle').textContent =
+                `#DK${dk.maDangKy} · Đặt lúc ${fmtDateTime(dk.ngayDangKy)}`;
+
+            // Product
+            const img = document.getElementById('order-product-img');
+            img.src = imgChienDich(cd);
+            img.onerror = () => { img.src = '../images/banner.png'; };
+            document.getElementById('o-tenCD').textContent = cd.tenChienDich || cd.maChienDich || '—';
+            document.getElementById('o-moc').textContent =
+                `Mốc cược: ${bg.soLuongToiThieu ?? '—'}–${bg.soLuongToiDa ?? '—'} sản phẩm`;
+
+            // Variants — load từ PhieuChiTietDangKy
+            try {
+                const r2 = await adminApi.getChiTietDonHang(dkId);
+                if (r2.success && r2.data?.length) {
+                    document.getElementById('o-variants').textContent = r2.data.map(ct =>
+                        `${ct.mauSac?.tenMau || '—'} · ${ct.kichThuoc?.tenSize || '—'} × ${ct.soLuong}`
+                    ).join(' | ');
+                } else {
+                    document.getElementById('o-variants').textContent = `SL tổng: ${dk.tongSoLuong}`;
+                }
+            } catch (_) {
+                document.getElementById('o-variants').textContent = `SL tổng: ${dk.tongSoLuong}`;
+            }
+
+            // Price breakdown
+            document.getElementById('o-giaSP').textContent =
+                `${dk.tongSoLuong || 0} × ${fmtMoney(bg.donGia || cd.giaGoc)}`;
+            document.getElementById('o-phi').textContent = fmtMoney(cd.phiThamGia);
+            document.getElementById('o-tong').textContent = fmtMoney(tt.soTienThanhToan);
+            document.getElementById('o-hoan').textContent =
+                dk.trangThaiHoanTien ? fmtMoney(tt.soTienThanhToan) : '—';
+
+            // Customer
+            document.getElementById('o-cusName').textContent = nd.tenDangNhap || '—';
+            document.getElementById('o-cusId').textContent = '#' + (nd.maNguoiDung || '—');
+            document.getElementById('o-cusEmail').textContent = nd.email || '—';
+            document.getElementById('o-cusPhone').textContent = nd.soDienThoai || '—';
+            document.getElementById('o-cusAddress').textContent = tt.diaChiGiaoHang || '—';
+            if (nd.maNguoiDung) {
+                document.getElementById('o-cusLink').href = `admin-customer-detail.html?id=${nd.maNguoiDung}`;
+            }
+
+            // Timeline times
+            document.getElementById('t-dat').textContent = fmtDateTime(dk.ngayDangKy);
+            if (tt.ngayThanhToan) document.getElementById('t-thanhtoan').textContent = fmtDateTime(tt.ngayThanhToan);
+        } catch (e) {
+            showToast('Lỗi tải đơn: ' + e.message, 'error');
+        }
+    }
+
+    /** Load phiếu giao hàng (nếu có) */
+    async function loadGiaoHang() {
+        try {
+            const r = await adminApi.getGiaoHangByDangKy(dkId);
+            if (r.success) {
+                currentDh = r.data;
+            }
+        } catch (_) {}
+        renderShipping();
+    }
+
+    /** Render timeline động dựa trên currentDk + currentDh */
+    function renderTimeline() {
+        const items = document.querySelectorAll('#o-timeline .timeline-item');
+        items.forEach(it => it.classList.remove('active', 'done'));
+
+        const setStep = (key, state) => {
+            const it = document.querySelector(`#o-timeline .timeline-item[data-step="${key}"]`);
+            if (it) it.classList.add(state);
+        };
+
+        // Đặt hàng - luôn done
+        setStep('dat', 'done');
+
+        // Thanh toán - done nếu có ngayThanhToan
+        const tt = currentDk?.thanhToan;
+        if (tt?.ngayThanhToan) setStep('thanhtoan', 'done');
+
+        // Nếu hủy thì coi như dừng
+        if (currentDk?.daHuy) {
+            return;
+        }
+
+        // Theo trangThaiGiaoHang của DonHang
+        const tg = currentDh?.trangThaiGiaoHang;
+        if (tg === 'Đã giao') {
+            setStep('chuanbi', 'done');
+            setStep('danggiao', 'done');
+            setStep('dagiao', 'done');
+            document.getElementById('t-dagiao').textContent = fmtDateTime(currentDh.ngayTaoDon);
+        } else if (tg === 'Đang giao') {
+            setStep('chuanbi', 'done');
+            setStep('danggiao', 'active');
+            document.getElementById('t-danggiao').textContent = fmtDateTime(currentDh.ngayTaoDon);
+        } else if (tg === 'Đang chuẩn bị') {
+            setStep('chuanbi', 'active');
+            document.getElementById('t-chuanbi').textContent = fmtDateTime(currentDh.ngayTaoDon);
+        }
+    }
+
+    /** Render khu controls (tạo phiếu giao / cập nhật trạng thái / hủy đơn / hoàn tiền) */
+    function renderControls() {
+        const wrap = document.getElementById('o-controls');
+        wrap.innerHTML = '';
+        if (!currentDk) return;
+
+        // 1. Đơn đã hủy
+        if (currentDk.daHuy) {
+            const span = document.createElement('p');
+            span.style.cssText = 'color:#f44336;font-weight:600;';
+            const isHoan = currentDk.daHoanTien || currentDk.trangThaiHoanTien;
+            span.textContent = isHoan
+                ? '✓ Đơn đã hủy & hoàn tiền'
+                : '⚠ Đơn đã hủy, chưa hoàn tiền';
+            wrap.appendChild(span);
+
+            if (!isHoan) {
+                const btn = btnPrimary('Xác nhận hoàn tiền', async () => {
+                    if (!confirm('Xác nhận hoàn tiền cho đơn này?')) return;
+                    const r = await adminApi.xacNhanHoanTien(dkId);
+                    if (r.success) { showToast('Đã xác nhận hoàn tiền'); reload(); }
+                    else showToast(r.message, 'error');
+                });
+                wrap.appendChild(btn);
+            }
+            return;
+        }
+
+        // 2. Chưa có phiếu giao → cho tạo
+        if (!currentDh) {
+            const note = document.createElement('p');
+            note.style.cssText = 'color:#666;margin-bottom:12px;';
+            note.textContent = 'Chưa có phiếu giao hàng. Tạo phiếu sau khi chiến dịch thành công.';
+            wrap.appendChild(note);
+
+            wrap.appendChild(btnPrimary('Tạo phiếu giao hàng', async () => {
+                if (!confirm('Tạo phiếu giao hàng từ đăng ký này?')) return;
+                const r = await adminApi.taoPhieuGiao(dkId, {});
+                if (r.success) { showToast('Đã tạo phiếu giao'); reload(); }
+                else showToast(r.message, 'error');
+            }));
+
+            // Vẫn cho phép hủy đơn
+            wrap.appendChild(spacer());
+            wrap.appendChild(btnDanger('Hủy đơn hàng', async () => {
+                if (!confirm('Hủy đơn hàng này?')) return;
+                const r = await adminApi.huyDonHang(dkId);
+                if (r.success) { showToast('Đã hủy đơn'); reload(); }
+                else showToast(r.message, 'error');
+            }));
+            return;
+        }
+
+        // 3. Đã có phiếu giao → cho đổi trạng thái
+        const label = document.createElement('label');
+        label.textContent = 'Cập nhật trạng thái giao hàng';
+        label.style.cssText = 'display:block;font-weight:600;margin-bottom:6px;';
+        wrap.appendChild(label);
+
+        const sel = document.createElement('select');
+        sel.className = 'form-input';
+        ['Đang chuẩn bị', 'Đang giao', 'Đã giao'].forEach(t => {
+            const opt = document.createElement('option');
+            opt.value = t; opt.textContent = t;
+            if (t === currentDh.trangThaiGiaoHang) opt.selected = true;
+            sel.appendChild(opt);
+        });
+        wrap.appendChild(sel);
+
+        wrap.appendChild(spacer());
+        wrap.appendChild(btnPrimary('Lưu trạng thái', async () => {
+            const tt = sel.value;
+            if (tt === currentDh.trangThaiGiaoHang) { showToast('Trạng thái không đổi'); return; }
+            const r = await adminApi.capNhatTrangThaiGiao(currentDh.maDonHang, tt);
+            if (r.success) { showToast('Đã cập nhật'); reload(); }
+            else showToast(r.message, 'error');
+        }));
+
+        // In hóa đơn / phiếu giao hàng (trang JSP phía backend)
+        wrap.appendChild(spacer());
+        const printBase = 'http://localhost:8080/print';
+        ['invoice|🖨 In hóa đơn', 'delivery|📦 In phiếu giao hàng'].forEach(s => {
+            const [type, text] = s.split('|');
+            const a = document.createElement('a');
+            a.href = `${printBase}/${type}/${encodeURIComponent(currentDh.maDonHang)}`;
+            a.target = '_blank';
+            a.className = 'btn-secondary-admin';
+            a.style.cssText = 'display:inline-block;margin-right:8px;text-decoration:none;';
+            a.textContent = text;
+            wrap.appendChild(a);
+        });
+    }
+
+    /** Render thông tin phiếu giao + chi tiết bên cột phải */
+    function renderShipping() {
+        const wrap = document.getElementById('o-shipping');
+        if (!currentDh) {
+            wrap.innerHTML = `
+                <div class="order-info-list">
+                    <div class="order-info-item">
+                        <span style="color:#888;">Chưa có phiếu giao hàng</span>
+                    </div>
+                </div>`;
+            return;
+        }
+
+        const dh = currentDh;
+        const cls = dh.trangThaiGiaoHang === 'Đã giao' ? 'success'
+                  : dh.trangThaiGiaoHang === 'Đang giao' ? 'ongoing' : 'pending';
+
+        const chiTietRows = (dh.chiTietDonHangs || []).map(ct => `
+            <tr>
+                <td>${ct.mauSac?.tenMau || '—'}</td>
+                <td><strong>${ct.kichThuoc?.tenSize || '—'}</strong></td>
+                <td>${ct.soLuong || 0}</td>
+            </tr>`).join('');
+
+        wrap.innerHTML = `
+            <div class="order-info-list">
+                <div class="order-info-item">
+                    <strong>Mã phiếu:</strong>
+                    <span style="margin-left:6px;">${dh.maDonHang}</span>
+                </div>
+                <div class="order-info-item">
+                    <strong>Trạng thái:</strong>
+                    <span class="status-badge ${cls}" style="margin-left:6px;">${dh.trangThaiGiaoHang}</span>
+                </div>
+                <div class="order-info-item">
+                    <strong>Giá chốt:</strong>
+                    <span style="margin-left:6px;">${fmtMoney(dh.giaChotCuoiCung)}</span>
+                </div>
+                <div class="order-info-item">
+                    <strong>Số tiền hoàn lại:</strong>
+                    <span style="margin-left:6px;">${fmtMoney(dh.soTienHoanLai)}</span>
+                </div>
+                <div class="order-info-item">
+                    <strong>Ngày tạo:</strong>
+                    <span style="margin-left:6px;">${fmtDateTime(dh.ngayTaoDon)}</span>
+                </div>
+            </div>
+
+            ${chiTietRows ? `
+            <table class="admin-table" style="margin-top:14px;">
+                <thead>
+                    <tr><th>Màu</th><th>Size</th><th>Số lượng</th></tr>
+                </thead>
+                <tbody>${chiTietRows}</tbody>
+            </table>` : ''}
+        `;
+    }
+
+    // ── Helpers UI ────────────────────────────────────────
+    function btnPrimary(text, onClick) {
+        const b = document.createElement('button');
+        b.className = 'btn-primary-admin';
+        b.style.marginTop = '8px';
+        b.textContent = text;
+        b.onclick = onClick;
+        return b;
+    }
+    function btnDanger(text, onClick) {
+        const b = document.createElement('button');
+        b.className = 'btn-secondary-admin';
+        b.style.cssText = 'color:#f44336;border-color:#f44336;margin-top:8px;';
+        b.textContent = text;
+        b.onclick = onClick;
+        return b;
+    }
+    function spacer() {
+        const d = document.createElement('div');
+        d.style.height = '4px';
+        return d;
+    }
+
+    async function reload() {
+        currentDk = null; currentDh = null;
+        await loadDangKy();
+        await loadGiaoHang();
+        renderTimeline();
+        renderControls();
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi tiết chiến dịch - EXED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/campaign-detail.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="../images/logo.png" alt="EXPED">
+            </div>
+            <nav class="nav">
+                <a href="../index.html" class="nav-link">TRANG CHỦ</a>
+                <a href="campaigns.html" class="nav-link active">CHIẾN DỊCH</a>
+                <a href="about.html" class="nav-link">GIỚI THIỆU</a>
+                <a href="artists.html" class="nav-link">NGHỆ SĨ COLLAB</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-box">
+                    <input type="text" placeholder="Tìm kiếm..." class="search-input">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="user-dropdown">
+                    <button class="user-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <svg class="arrow-down" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="12" cy="7" r="4"></circle>
+                            </svg>
+                            <span>Hồ sơ cá nhân</span>
+                        </a>
+                        <a href="order-history.html" class="dropdown-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            <span>Đơn hàng của tôi</span>
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                            <span>Yêu thích</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item logout">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            <span>Đăng xuất</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Campaign Detail -->
+    <section class="campaign-detail">
+        <div class="container">
+            <div class="detail-grid">
+                <!-- Left: Product Images -->
+                <div class="detail-left">
+                    <div class="product-gallery">
+                        <div class="main-image">
+                            <img src="../images/banner.jpg" alt="ROSÉ X EXED" id="mainImg">
+                        </div>
+                        <div class="thumbnail-list">
+                            <img src="../images/banner.jpg" alt="Thumb 1" class="thumb active">
+                            <img src="../images/banner.jpg" alt="Thumb 2" class="thumb">
+                            <img src="../images/banner.jpg" alt="Thumb 3" class="thumb">
+                            <img src="../images/banner.jpg" alt="Thumb 4" class="thumb">
+                        </div>
+                    </div>
+
+                    <!-- Artist Info -->
+                    <div class="artist-collab-box">
+                        <h3>NGHỆ SĨ COLLAB</h3>
+                        <div class="artist-profile">
+                            <img src="../images/rose.jpg" alt="ROSÉ">
+                            <div class="artist-info">
+                                <h4>ROSÉ</h4>
+                                <p>Thành viên BLACKPINK, ca sĩ solo nổi tiếng toàn cầu với phong cách thời trang độc đáo và cá tính.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Variants Section -->
+                    <div class="product-variants">
+                        <h3>MÀU SẮC & KÍCH THƯỚC</h3>
+                        
+                        <!-- Colors Section -->
+                        <div class="variant-section">
+                            <h4>Màu sắc có sẵn</h4>
+                            <div class="color-list" id="colorList">
+                                <!-- Colors will be loaded dynamically -->
+                            </div>
+                        </div>
+                        
+                        <!-- Sizes Section -->
+                        <div class="variant-section">
+                            <h4>Kích thước có sẵn</h4>
+                            <div class="size-list" id="sizeList">
+                                <!-- Sizes will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Campaign Info -->
+                <div class="detail-right">
+                    <div class="campaign-header">
+                        <span class="status-badge active">Đang diễn ra</span>
+                        <h1>CHIẾN DỊCH ROSÉ X EXED</h1>
+                        <p class="product-name">Limited Edition Sneaker - Premium Collection</p>
+                    </div>
+
+                    <!-- Countdown Timer -->
+                    <div class="countdown-box">
+                        <div class="countdown-label">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span>Kết thúc sau:</span>
+                        </div>
+                        <div class="countdown-timer">
+                            <div class="time-unit">
+                                <span class="time-value">03</span>
+                                <span class="time-label">Ngày</span>
+                            </div>
+                            <span class="time-sep">:</span>
+                            <div class="time-unit">
+                                <span class="time-value">14</span>
+                                <span class="time-label">Giờ</span>
+                            </div>
+                            <span class="time-sep">:</span>
+                            <div class="time-unit">
+                                <span class="time-value">24</span>
+                                <span class="time-label">Phút</span>
+                            </div>
+                            <span class="time-sep">:</span>
+                            <div class="time-unit">
+                                <span class="time-value">55</span>
+                                <span class="time-label">Giây</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-section">
+                        <div class="progress-header">
+                            <span class="progress-title">Tiến độ đạt ngưỡng sản xuất (MOQ)</span>
+                            <div class="progress-status-container">
+                                <span class="progress-count">Đang tải...</span>
+                            </div>
+                        </div>
+                        <div class="progress-bar-detail">
+                            <div class="progress-fill-detail" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- MOQ Status -->
+                    <div class="moq-section">
+                        <div class="moq-info">
+                            <div class="moq-badge">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                                </svg>
+                                <span>MOQ: 100 sản phẩm</span>
+                            </div>
+                            <p class="moq-status success">✓ Đã đạt ngưỡng sản xuất tối thiểu</p>
+                        </div>
+                    </div>
+
+                    <!-- Tiered Pricing Table -->
+                    <div class="pricing-table">
+                        <h3>BẢNG GIÁ BẬC THANG - ĐẶT CƯỢC MỐC SỐ LƯỢNG</h3>
+                        <p class="pricing-desc">Chọn mốc dự đoán tổng số lượng sẽ bán được. Nếu cược đúng, bạn sẽ nhận giá tốt hơn!</p>
+                        
+                        <div class="bet-warning-box">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+                                <line x1="12" y1="9" x2="12" y2="13"></line>
+                                <line x1="12" y1="17" x2="12.01" y2="17"></line>
+                            </svg>
+                            <div>
+                                <strong>Lưu ý quan trọng về thời gian đặt cược:</strong>
+                                <p>Sau khi chọn mốc, bạn có 2 ngày (48 giờ) để quyết định. Nếu hết thời gian mà mốc chưa đạt đủ số lượng, bạn sẽ tự động bị xem là cược sai và phải thanh toán giá cao nhất (28.850.000 đ).</p>
+                            </div>
+                        </div>
+                        
+                        <div class="price-tiers">
+                            <div class="tier-row" data-tier="100-499">
+                                <div class="tier-range">100 - 499</div>
+                                <div class="tier-price">25.550.000 đ</div>
+                                <div class="tier-discount">-11.4%</div>
+                            </div>
+                            <div class="tier-row" data-tier="500-799">
+                                <div class="tier-range">500 - 799</div>
+                                <div class="tier-price">23.550.000 đ</div>
+                                <div class="tier-discount">-18.4%</div>
+                            </div>
+                            <div class="tier-row" data-tier="800-999">
+                                <div class="tier-range">800 - 999</div>
+                                <div class="tier-price">21.550.000 đ</div>
+                                <div class="tier-discount">-25.3%</div>
+                            </div>
+                            <div class="tier-row" data-tier="1000-1200">
+                                <div class="tier-range">1000 - 1200</div>
+                                <div class="tier-price">18.550.000 đ</div>
+                                <div class="tier-discount">-35.7%</div>
+                            </div>
+                        </div>
+                        <div class="price-note">
+                            <strong>Giá gốc:</strong> 28.850.000 đ | <strong>Phí tham gia:</strong> 500.000 đ (không hoàn lại)
+                        </div>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="action-buttons" id="actionButtons">
+                        <a href="checkout.html" class="btn-join-campaign" id="joinBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="9" cy="21" r="1"></circle>
+                                <circle cx="20" cy="21" r="1"></circle>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                            </svg>
+                            THAM GIA NGAY
+                        </a>
+                        <button class="btn-share">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="18" cy="5" r="3"></circle>
+                                <circle cx="6" cy="12" r="3"></circle>
+                                <circle cx="18" cy="19" r="3"></circle>
+                                <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+                                <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+                            </svg>
+                            CHIA SẺ
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Description -->
+            <div class="product-description">
+                <h2>MÔ TẢ SẢN PHẨM</h2>
+                <p>Giày sneaker phiên bản giới hạn được thiết kế độc quyền bởi ROSÉ và EXED. Sản phẩm kết hợp phong cách streetwear hiện đại với chất liệu cao cấp, mang đến trải nghiệm thời trang đẳng cấp.</p>
+                <ul>
+                    <li>Chất liệu: Da thật cao cấp, đế cao su chống trượt</li>
+                    <li>Màu sắc: Trắng kem với điểm nhấn vàng gold</li>
+                    <li>Size: 35 - 44 (EU)</li>
+                    <li>Xuất xứ: Hàn Quốc</li>
+                    <li>Bảo hành: 12 tháng</li>
+                </ul>
+            </div>
+
+            <!-- Reviews Section - Only show for completed campaigns -->
+            <div class="reviews-section" id="reviewsSection" style="display: none;">
+                <h2>ĐÁNH GIÁ TỪ KHÁCH HÀNG</h2>
+                <div class="review-stats">
+                    <div class="rating-summary">
+                        <div>
+                            <div class="rating-number" id="ratingNumber">4.8</div>
+                            <div class="rating-stars" id="ratingStars">★★★★★</div>
+                        </div>
+                        <div class="rating-count" id="ratingCount">1,208 đánh giá</div>
+                    </div>
+                </div>
+
+                <div class="review-filter-bar">
+                    <div class="review-filter-group">
+                        <label for="timeFilter">Lọc theo thời gian</label>
+                        <select id="timeFilter" class="review-filter-select">
+                            <option value="all">Tất cả</option>
+                            <option value="30">30 ngày</option>
+                            <option value="90">3 tháng</option>
+                            <option value="180">6 tháng</option>
+                            <option value="365">1 năm</option>
+                        </select>
+                    </div>
+                    <div class="review-filter-group">
+                        <label for="ratingFilter">Lọc theo sao</label>
+                        <select id="ratingFilter" class="review-filter-select">
+                            <option value="all">Tất cả</option>
+                            <option value="5">5 sao</option>
+                            <option value="4">4 sao trở lên</option>
+                            <option value="3">3 sao trở lên</option>
+                            <option value="2">2 sao trở lên</option>
+                            <option value="1">1 sao trở lên</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="review-list" id="reviewList"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>THÔNG TIN LIÊN HỆ</h4>
+                    <p>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-top: 2px;">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Địa chỉ: 48 Cao Thắng, thành phố Đà Nẵng
+                    </p>
+                    <p>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-top: 2px;">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        Điện thoại: 090 111 2345
+                    </p>
+                    <p>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="margin-top: 2px;">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        Email: exed@gmail.com
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>VỀ CHÚNG TÔI</h4>
+                    <ul>
+                        <li>Giới thiệu EXED</li>
+                        <li>Cam kết chất lượng</li>
+                        <li>Đối tác chiến lược</li>
+                        <li>Chương trình khách hàng thân thiết</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>THEO DÕI CHÚNG TÔI</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/auth-manager.js"></script>
+    <script src="../js/campaign-detail.js"></script>
+    <script src="../js/data.js"></script>
+    <script>
+        // Wait for DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tier selection and thumbnail gallery are now handled in campaign-detail.js
+            // after data is loaded
+        });
+    </script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const campaignId = urlParams.get('id');
+        let campaignReviews = [];
+        let reviewsLoaded = false;
+
+        const reviewList = document.getElementById('reviewList');
+        const timeFilter = document.getElementById('timeFilter');
+        const ratingFilter = document.getElementById('ratingFilter');
+        const ratingNumber = document.getElementById('ratingNumber');
+        const ratingStars = document.getElementById('ratingStars');
+        const ratingCount = document.getElementById('ratingCount');
+
+        const renderStars = rating => '★'.repeat(rating) + '☆'.repeat(5 - rating);
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('vi-VN');
+        }
+
+        function renderReviewItem(review) {
+            const imagesMarkup = review.images && review.images.length
+                ? `<div class="review-images">${review.images.map(src => `<img src="${src}" alt="Review image">`).join('')}</div>`
+                : '';
+
+            const repliesMarkup = review.replies && review.replies.length
+                ? `<div class="reply-list">${review.replies.map(reply => `
+                        <div class="reply-item">
+                            <h5>${reply.author} • ${formatDate(reply.createdAt)}</h5>
+                            <p>${reply.message}</p>
+                        </div>
+                    `).join('')}</div>`
+                : '';
+
+            return `
+                <div class="review-item" data-review-id="${review.id}">
+                    <div class="review-header">
+                        <div class="reviewer-info">
+                            <img src="../images/rose.jpg" alt="${review.name}">
+                            <div>
+                                <h4>${review.name}</h4>
+                                <div class="review-stars">${renderStars(review.rating)}</div>
+                            </div>
+                        </div>
+                        <span class="review-date">${formatDate(review.createdAt)}</span>
+                    </div>
+                    <p class="review-text">${review.comment}</p>
+                    ${imagesMarkup}
+                    ${repliesMarkup}
+                </div>
+            `;
+        }
+
+        function updateReviewStats(filteredReviews) {
+            const count = filteredReviews.length;
+            if (!count) {
+                ratingNumber.textContent = '0.0';
+                ratingStars.textContent = '☆☆☆☆☆';
+                ratingCount.textContent = '0 đánh giá';
+                return;
+            }
+            const average = filteredReviews.reduce((sum, review) => sum + review.rating, 0) / count;
+            const rounded = Math.round(average * 10) / 10;
+            ratingNumber.textContent = rounded.toFixed(1);
+            ratingStars.textContent = renderStars(Math.round(average));
+            ratingCount.textContent = `${count} đánh giá`;
+        }
+
+        function renderReviews(list) {
+            if (!list.length) {
+                reviewList.innerHTML = '<div class="empty-review">Không có đánh giá phù hợp với bộ lọc hiện tại.</div>';
+                return;
+            }
+            reviewList.innerHTML = list.map(renderReviewItem).join('');
+        }
+
+        async function filterReviews() {
+            if (!reviewList) return; // Guard clause if element doesn't exist
+            
+            // Tải dữ liệu đánh giá thực tế từ API nếu chưa tải
+            if (!reviewsLoaded && campaignId) {
+                try {
+                    const response = await api.getDanhGiaByChienDich(campaignId);
+                    if (response.success && response.data) {
+                        campaignReviews = response.data;
+                    }
+                } catch (error) {
+                    console.error('Không thể tải đánh giá từ API:', error);
+                } finally {
+                    reviewsLoaded = true;
+                }
+            }
+
+            const now = new Date();
+            const daysValue = timeFilter ? timeFilter.value : 'all';
+            const minRating = ratingFilter && ratingFilter.value === 'all' ? 0 : Number(ratingFilter ? ratingFilter.value : 0);
+
+            const filtered = campaignReviews.filter(review => {
+                const reviewDate = new Date(review.createdAt);
+                const timeMatch = daysValue === 'all'
+                    || (now - reviewDate) / (1000 * 60 * 60 * 24) <= Number(daysValue);
+
+                const ratingMatch = review.rating >= minRating;
+                return timeMatch && ratingMatch;
+            });
+
+            updateReviewStats(filtered);
+            renderReviews(filtered);
+        }
+
+        // Only add event listeners if elements exist
+        if (timeFilter) {
+            timeFilter.addEventListener('change', filterReviews);
+        }
+        if (ratingFilter) {
+            ratingFilter.addEventListener('change', filterReviews);
+        }
+    </script>
+</body>
+</html>

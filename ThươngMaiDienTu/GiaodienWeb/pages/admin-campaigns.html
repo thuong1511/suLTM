@@ -1,0 +1,353 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý chiến dịch - Admin EXED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css?v=2000">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-container">
+            <div class="logo">
+                <img src="../images/logo_admin.png" alt="EXED">
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <div class="admin-actions">
+                <button class="notification-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="badge">5</span>
+                </button>
+                <div class="admin-profile">
+                    <img src="../images/rose.jpg" alt="Admin">
+                    <span>Admin User</span>
+                    <div class="admin-dropdown">
+                        <a href="admin-settings.html" class="dropdown-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Cài đặt
+                        </a>
+                        <a href="login.html" class="dropdown-item logout" onclick="localStorage.clear()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin-campaigns.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                    <span>Quản lý chiến dịch</span>
+                </a>
+                <a href="admin-customers.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Quản lý khách hàng</span>
+                </a>
+                <a href="admin-orders.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+                <a href="admin-products.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+                <a href="admin-artists.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <polyline points="17 11 19 13 23 9"></polyline>
+                    </svg>
+                    <span>Nghệ sĩ Collab</span>
+                </a>
+                <a href="admin-settings.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>Cấu hình hệ thống</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="page-header">
+                <h1>QUẢN LÝ CHIẾN DỊCH</h1>
+                <button class="btn-primary-admin" onclick="window.location.href='admin-create-campaign.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Tạo chiến dịch mới
+                </button>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="content-section">
+                <div class="filter-bar-admin">
+                    <div class="filter-group-admin">
+                        <label>Trạng thái</label>
+                        <select class="filter-select-admin">
+                            <option value="">Tất cả</option>
+                            <option value="ongoing">Đang diễn ra</option>
+                            <option value="success">Thành công</option>
+                            <option value="failed">Thất bại</option>
+                            <option value="draft">Nháp</option>
+                        </select>
+                    </div>
+                    <div class="filter-group-admin">
+                        <label>Nghệ sĩ</label>
+                        <select class="filter-select-admin">
+                            <option value="">Tất cả</option>
+                            <option value="rose">ROSÉ</option>
+                            <option value="lisa">LISA</option>
+                            <option value="jisoo">JISOO</option>
+                            <option value="parkbogum">PARK BO GUM</option>
+                        </select>
+                    </div>
+                    <div class="filter-group-admin">
+                        <label>Tìm kiếm</label>
+                        <input type="text" placeholder="Tên chiến dịch..." class="filter-input-admin">
+                    </div>
+                    <button class="btn-secondary-admin">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        Tìm kiếm
+                    </button>
+                </div>
+            </div>
+
+            <!-- Campaign Table -->
+            <div class="content-section">
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Tên chiến dịch</th>
+                                <th>Nghệ sĩ</th>
+                                <th>Trạng thái</th>
+                                <th>Tiến độ</th>
+                                <th>Thời gian còn lại</th>
+                                <th>Doanh thu</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="campaigns-tbody">
+                            <tr><td colspan="8" style="text-align:center;padding:30px;">Đang tải...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin-api.js"></script>
+    <script>
+    let allChienDich = [];
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        await initAdminHeader();
+        await loadChienDich();
+        setupFilters();
+    });
+
+    async function loadChienDich() {
+        const tbody = document.getElementById('campaigns-tbody');
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:30px;">Đang tải...</td></tr>';
+        try {
+            const res = await adminApi.getAllChienDich();
+            if (!res.success) {
+                tbody.innerHTML = `<tr><td colspan="8" style="text-align:center;color:red;">${res.message}</td></tr>`;
+                return;
+            }
+            allChienDich = res.data;
+
+            // Điền danh sách nghệ sĩ vào select
+            const selNgheSi = document.getElementById('sel-nghesi');
+            if (selNgheSi) {
+                const ngheSiList = [...new Map(allChienDich.map(cd => [
+                    cd.maNgheSi,
+                    { id: cd.maNgheSi, ten: cd.ngheSi?.tenNgheSi || cd.maNgheSi }
+                ])).values()];
+                selNgheSi.innerHTML = '<option value="">Tất cả</option>' +
+                    ngheSiList.map(ns => `<option value="${ns.id}">${ns.ten}</option>`).join('');
+            }
+
+            renderTable(allChienDich);
+        } catch (e) {
+            document.getElementById('campaigns-tbody').innerHTML =
+                `<tr><td colspan="8" style="text-align:center;color:red;">Lỗi kết nối BE: ${e.message}</td></tr>`;
+        }
+    }
+
+    function applyFilters() {
+        const thoiDiem = document.getElementById('sel-thoiDiem')?.value || '';
+        const ngheSi  = document.getElementById('sel-nghesi')?.value || '';
+        const q       = document.getElementById('inp-search')?.value.toLowerCase() || '';
+
+        const filtered = allChienDich.filter(cd => {
+            if (thoiDiem && cd.thoiDiem !== thoiDiem) return false;
+            if (ngheSi   && cd.maNgheSi !== ngheSi)   return false;
+            if (q && !cd.tenChienDich?.toLowerCase().includes(q) &&
+                     !cd.maChienDich?.toLowerCase().includes(q))  return false;
+            return true;
+        });
+        renderTable(filtered);
+    }
+
+    function renderTable(list) {
+        const tbody = document.getElementById('campaigns-tbody');
+        if (!list.length) {
+            tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:30px;">Không có dữ liệu</td></tr>';
+            return;
+        }
+        tbody.innerHTML = list.map(cd => {
+            const pct    = cd.nguongToiDa > 0 ? Math.round((cd.tongSoLuongHienTai / cd.nguongToiDa) * 100) : 0;
+            const barCls = cd.thoiDiem === 'Đã kết thúc' ? 'completed' : (cd.thoiDiem === 'Thất bại' ? 'failed' : '');
+            const now    = new Date();
+            const end    = cd.ngayKetThuc ? new Date(cd.ngayKetThuc) : null;
+            let timeLeft = '—';
+            if (end && end > now) {
+                const diff  = Math.floor((end - now) / 1000);
+                const days  = Math.floor(diff / 86400);
+                const hours = Math.floor((diff % 86400) / 3600);
+                timeLeft = `${days} ngày ${hours} giờ`;
+            } else if (cd.thoiDiem === 'Đã kết thúc' || cd.thoiDiem === 'Thất bại') {
+                timeLeft = 'Đã kết thúc';
+            }
+            const img = imgChienDich(cd);
+            return `
+            <tr>
+                <td>#${cd.maChienDich}</td>
+                <td>
+                    <div class="campaign-cell">
+                        <img src="${img}" alt="${cd.tenChienDich}" onerror="this.src='../images/banner.png'">
+                        <span>${cd.tenChienDich}</span>
+                    </div>
+                </td>
+                <td>${cd.ngheSi?.tenNgheSi || cd.maNgheSi}</td>
+                <td>${thoiDiemBadge(cd.thoiDiem)}</td>
+                <td>
+                    <div class="progress-mini">
+                        <div class="progress-bar-mini ${barCls}" style="width:${Math.min(pct,100)}%"></div>
+                    </div>
+                    <span class="progress-text">${cd.tongSoLuongHienTai}/${cd.nguongToiDa}</span>
+                </td>
+                <td>${timeLeft}</td>
+                <td>${fmtMoney((cd.tongSoLuongHienTai || 0) * (cd.giaGoc || 0))}</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn-icon edit" title="Chỉnh sửa"
+                            onclick="window.location.href='admin-create-campaign.html?id=${cd.maChienDich}&mode=edit'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </button>
+                        <button class="btn-icon view" title="Xem chi tiết"
+                            onclick="window.location.href='admin-campaign-detail.html?id=${cd.maChienDich}'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                        <button class="btn-icon delete" title="Xóa" onclick="deleteChienDich('${cd.maChienDich}')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    function setupFilters() {
+        // Gán id cho các filter element để tránh nhầm lẫn
+        const selects = document.querySelectorAll('.filter-select-admin');
+        if (selects[0]) selects[0].id = 'sel-thoiDiem';
+        if (selects[1]) selects[1].id = 'sel-nghesi';
+        const input = document.querySelector('.filter-input-admin');
+        if (input) input.id = 'inp-search';
+
+        // Cập nhật options trạng thái
+        const selThoiDiem = document.getElementById('sel-thoiDiem');
+        if (selThoiDiem) {
+            selThoiDiem.innerHTML = `
+                <option value="">Tất cả</option>
+                <option value="Đang diễn ra">Đang diễn ra</option>
+                <option value="Sắp bắt đầu">Sắp bắt đầu</option>
+                <option value="Đã kết thúc">Đã kết thúc</option>
+                <option value="Thất bại">Thất bại</option>
+            `;
+            selThoiDiem.addEventListener('change', applyFilters);
+        }
+
+        document.getElementById('sel-nghesi')?.addEventListener('change', applyFilters);
+
+        const btnSearch = document.querySelector('.btn-secondary-admin');
+        if (btnSearch) btnSearch.addEventListener('click', applyFilters);
+        document.getElementById('inp-search')?.addEventListener('keydown', e => {
+            if (e.key === 'Enter') applyFilters();
+        });
+    }
+
+    async function deleteChienDich(id) {
+        if (!confirm(`Xóa chiến dịch ${id}? Hành động này không thể hoàn tác.`)) return;
+        try {
+            const res = await adminApi.deleteChienDich(id);
+            if (res.success) { showToast('Đã xóa chiến dịch'); await loadChienDich(); }
+            else showToast(res.message, 'error');
+        } catch (e) { showToast('Lỗi kết nối', 'error'); }
+    }
+    </script>
+</body>
+</html>
+

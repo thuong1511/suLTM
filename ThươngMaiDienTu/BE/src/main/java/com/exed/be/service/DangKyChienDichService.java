@@ -1,0 +1,444 @@
+package com.exed.be.service;
+
+import com.exed.be.dto.DangKyChienDichRequest;
+import com.exed.be.model.*;
+import com.exed.be.repository.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.time.LocalDateTime;
+
+@Service
+public class DangKyChienDichService {
+    
+    @Autowired
+    private DangKyChienDichRepository dangKyChienDichRepository;
+    
+    @Autowired
+    private DonHangRepository donHangRepository;
+    
+    @Autowired
+    private ThanhToanRepository thanhToanRepository;
+    
+    @Autowired
+    private BangGiaBacThangRepository bangGiaBacThangRepository;
+    
+    @Autowired
+    private NguoiDungRepository nguoiDungRepository;
+    
+    @Autowired
+    private ChienDichRepository chienDichRepository;
+    
+    @Autowired
+    private PhieuChiTietDangKyRepository phieuChiTietDangKyRepository;
+    
+    @Autowired
+    private SanPhamMauSacRepository sanPhamMauSacRepository;
+    
+    @Autowired
+    private WalletRepository walletRepository;
+    
+    @Autowired
+    private WalletTransactionRepository walletTransactionRepository;
+    
+    @Autowired
+    private ThongBaoRepository thongBaoRepository;
+    
+    public List<DangKyChienDich> getAllDangKy() {
+        return dangKyChienDichRepository.findAll();
+    }
+    
+    public Optional<DangKyChienDich> getDangKyById(Integer maDangKy) {
+        return dangKyChienDichRepository.findById(maDangKy);
+    }
+    
+    public List<DangKyChienDich> getDangKyByNguoiDung(String maNguoiDung) {
+        return dangKyChienDichRepository.findByNguoiDung_MaNguoiDung(maNguoiDung);
+    }
+    
+    public List<DangKyChienDich> getDangKyByChienDich(String maChienDich) {
+        return dangKyChienDichRepository.findByChienDich_MaChienDich(maChienDich);
+    }
+    
+    @org.springframework.transaction.annotation.Transactional
+    public DangKyChienDich createDangKy(DangKyChienDichRequest request) {
+        // Validate thanh toán
+        Optional<ThanhToan> thanhToan = thanhToanRepository.findById(request.getMaThanhToan());
+        if (!thanhToan.isPresent()) {
+            throw new RuntimeException("Thanh toán không tồn tại");
+        }
+        
+        // Validate bảng giá
+        Optional<BangGiaBacThang> bangGia = bangGiaBacThangRepository.findById(request.getMaMucGia());
+        if (!bangGia.isPresent()) {
+            throw new RuntimeException("Mức giá không tồn tại");
+        }
+        
+        // Validate người dùng
+        Optional<NguoiDung> nguoiDung = nguoiDungRepository.findById(request.getMaNguoiDung());
+        if (!nguoiDung.isPresent()) {
+            throw new RuntimeException("Người dùng không tồn tại");
+        }
+        
+        // Validate chiến dịch
+        Optional<ChienDich> chienDichOpt = chienDichRepository.findById(request.getMaChienDich());
+        if (!chienDichOpt.isPresent()) {
+            throw new RuntimeException("Chiến dịch không tồn tại");
+        }
+        ChienDich chienDich = chienDichOpt.get();
+        
+        // Validate số lượng (1-2)
+        if (request.getTongSoLuong() < 1 ) {
+            throw new RuntimeException("Số lượng phải từ 1 sản phẩm trở lên");
+        }
+        
+        // --- XỬ LÝ KHÔNG GIỚI HẠN / HOÀN TIỀN DƯ CHIẾN DỊCH ---
+        int currentQty = chienDich.getTongSoLuongHienTai() != null ? chienDich.getTongSoLuongHienTai() : 0;
+        int maxQty = chienDich.getNguongToiDa() != null ? chienDich.getNguongToiDa() : 999999;
+        int remaining = Math.max(0, maxQty - currentQty);
+        
+        int requestedQty = request.getTongSoLuong();
+        int approvedQty = requestedQty;
+        int excessQty = 0;
+        
+        if (requestedQty > remaining) {
+            if (remaining <= 0) {
+                // Hoàn lại 100% tiền đã thanh toán vào ví và báo lỗi
+                BigDecimal fullRefund = thanhToan.get().getSoTienThanhToan();
+                refundToWallet(request.getMaNguoiDung(), fullRefund, "Hoàn tiền 100% - Chiến dịch '" + chienDich.getTenChienDich() + "' đã đạt giới hạn tối đa");
+                
+                // Gửi thông báo
+                guiThongBaoHeThong(request.getMaNguoiDung(), 
+                    "Đăng ký thất bại - Chiến dịch đã đầy", 
+                    "Rất tiếc! Chiến dịch '" + chienDich.getTenChienDich() + "' đã đạt giới hạn tối đa số lượng sản phẩm đăng ký (" + maxQty + "). Số tiền " + formatMoney(fullRefund) + " đ đã được hoàn trả toàn bộ vào ví EXED của bạn.");
+                
+                throw new RuntimeException("Chiến dịch đã đạt giới hạn tối đa số lượng sản phẩm. Số tiền của bạn đã được hoàn trả vào ví EXED.");
+            } else {
+                approvedQty = remaining;
+                excessQty = requestedQty - remaining;
+                
+                // Tính số tiền hoàn lại cho số sản phẩm dư
+                BigDecimal unitPrice = chienDich.getGiaGoc() != null ? chienDich.getGiaGoc() : BigDecimal.ZERO;
+                BigDecimal excessRefund = unitPrice.multiply(new BigDecimal(excessQty));
+                
+                // Hoàn tiền dư vào ví
+                refundToWallet(request.getMaNguoiDung(), excessRefund, "Hoàn tiền số lượng sản phẩm dư (" + excessQty + " sp) - Chiến dịch '" + chienDich.getTenChienDich() + "'");
+                
+                // Cập nhật số tiền thực nhận trong ThanhToan
+                ThanhToan tt = thanhToan.get();
+                BigDecimal originalAmount = tt.getSoTienThanhToan();
+                tt.setSoTienThanhToan(originalAmount.subtract(excessRefund));
+                tt.setGhiChu((tt.getGhiChu() != null ? tt.getGhiChu() : "") + " (Đã hoàn lại " + formatMoney(excessRefund) + " đ cho " + excessQty + " sản phẩm vượt giới hạn)");
+                thanhToanRepository.save(tt);
+                
+                // Gửi thông báo
+                guiThongBaoHeThong(request.getMaNguoiDung(), 
+                    "Đăng ký thành công - Điều chỉnh số lượng sản phẩm", 
+                    "Chúc mừng! Bạn đã đăng ký thành công chiến dịch '" + chienDich.getTenChienDich() + "'. Do chiến dịch đã đạt ngưỡng tối đa, đơn hàng của bạn được duyệt mua thực tế là " + approvedQty + " sản phẩm. Số tiền chênh lệch " + formatMoney(excessRefund) + " đ của " + excessQty + " sản phẩm dư đã được hoàn lại vào ví EXED của bạn.");
+            }
+        }
+        
+        DangKyChienDich dangKy = new DangKyChienDich();
+        dangKy.setThanhToan(thanhToan.get());
+        dangKy.setBangGiaBacThang(bangGia.get());
+        dangKy.setNguoiDung(nguoiDung.get());
+        dangKy.setChienDich(chienDich);
+        dangKy.setTongSoLuong(approvedQty);
+        
+        DangKyChienDich saved = dangKyChienDichRepository.save(dangKy);
+        
+        // Sau khi lưu, trigger DB sẽ cập nhật tongSoLuongHienTai trong ChienDich.
+        // Đọc lại ChienDich từ DB để lấy giá trị mới nhất.
+        ChienDich chienDichUpdated = chienDichRepository.findById(request.getMaChienDich())
+                .orElse(chienDich);
+        
+        // Tính toán số lượng mới ngay trong Java để tránh bộ nhớ đệm Hibernate bị cũ
+        int originalQty = chienDich.getTongSoLuongHienTai() != null ? chienDich.getTongSoLuongHienTai() : 0;
+        int updatedQty = originalQty + approvedQty;
+        chienDichUpdated.setTongSoLuongHienTai(updatedQty);
+        
+        int maxQtyCheck = chienDichUpdated.getNguongToiDa() != null 
+                ? chienDichUpdated.getNguongToiDa() : 999999;
+        
+        // Nếu đã đạt ngưỡng tối đa hoặc hết hạn => cập nhật trạng thái chiến dịch
+        boolean daDay = updatedQty >= maxQtyCheck;
+        boolean daHetHan = chienDichUpdated.getNgayKetThuc() != null 
+                && chienDichUpdated.getNgayKetThuc().isBefore(java.time.LocalDateTime.now());
+        
+        if ((daDay || daHetHan) && !"Đã kết thúc".equals(chienDichUpdated.getThoiDiem())) {
+            chienDichUpdated.setThoiDiem("Đã kết thúc");
+            int moq = chienDichUpdated.getNguongMOQ() != null ? chienDichUpdated.getNguongMOQ() : 0;
+            if (updatedQty >= moq) {
+                chienDichUpdated.setTrangThai("Thành công");
+            } else {
+                chienDichUpdated.setTrangThai("Thất bại");
+            }
+        }
+        chienDichUpdated = chienDichRepository.save(chienDichUpdated);
+        
+        if ("Đã kết thúc".equals(chienDichUpdated.getThoiDiem()) && "Thành công".equals(chienDichUpdated.getTrangThai())) {
+            createOrdersForCampaign(chienDichUpdated);
+        }
+        
+        return saved;
+    }
+    
+    public DangKyChienDich huyDangKy(Integer maDangKy) {
+        Optional<DangKyChienDich> existing = dangKyChienDichRepository.findById(maDangKy);
+        if (existing.isPresent()) {
+            DangKyChienDich dangKy = existing.get();
+            ChienDich cd = dangKy.getChienDich();
+            
+            // 1. Kiểm tra nếu đơn hàng này là đơn gom sản phẩm cuối cùng (đã bị giới hạn số lượng và hoàn tiền phần dư)
+            if (dangKy.getThanhToan() != null && dangKy.getThanhToan().getGhiChu() != null 
+                    && dangKy.getThanhToan().getGhiChu().contains("vượt giới hạn")) {
+                throw new RuntimeException("Bạn không thể hủy vì đây là sản phẩm cuối cùng của chiến dịch");
+            }
+            
+            // 2. Kiểm tra nếu chiến dịch đã hoàn thành đạt tối đa số lượng và kết thúc thành công
+            if ("Đã kết thúc".equals(cd.getThoiDiem()) && "Thành công".equals(cd.getTrangThai())) {
+                throw new RuntimeException("Chiến dịch đã hoàn thành đạt tối đa số lượng, không thể hủy đơn đăng ký");
+            }
+            
+            // Get all PhieuChiTietDangKy for this registration
+            List<PhieuChiTietDangKy> chiTiets = phieuChiTietDangKyRepository.findByDangKyChienDich_MaDangKy(maDangKy);
+            
+            // Decrease soLuongDaDat for each color
+            for (PhieuChiTietDangKy chiTiet : chiTiets) {
+                // Find SanPham_MauSac by product and color
+                Optional<SanPhamMauSac> sanPhamMauSacOpt = sanPhamMauSacRepository
+                    .findByMaSanPhamAndMaMau(
+                        chiTiet.getSanPham().getMaSanPham(),
+                        chiTiet.getMauSac().getMaMau()
+                    );
+                
+                if (sanPhamMauSacOpt.isPresent()) {
+                    SanPhamMauSac sanPhamMauSac = sanPhamMauSacOpt.get();
+                    // Decrease soLuongDaDat by the quantity in this detail
+                    int currentDaDat = sanPhamMauSac.getSoLuongDaDat() != null ? sanPhamMauSac.getSoLuongDaDat() : 0;
+                    int newDaDat = Math.max(0, currentDaDat - chiTiet.getSoLuong());
+                    sanPhamMauSac.setSoLuongDaDat(newDaDat);
+                    sanPhamMauSacRepository.save(sanPhamMauSac);
+                }
+            }
+            
+            // Refund will be handled automatically by database trigger trg_HoanTienKhiHuyDangKy
+            // No need to manually create wallet transaction here
+            
+            // Mark registration as cancelled (trigger will handle refund)
+            dangKy.setDaHuy(true);
+            return dangKyChienDichRepository.save(dangKy);
+        }
+        return null;
+    }
+    
+    public boolean deleteDangKy(Integer maDangKy) {
+        Optional<DangKyChienDich> existing = dangKyChienDichRepository.findById(maDangKy);
+        if (existing.isPresent()) {
+            DangKyChienDich dangKy = existing.get();
+            ChienDich cd = dangKy.getChienDich();
+            
+            if (dangKy.getThanhToan() != null && dangKy.getThanhToan().getGhiChu() != null 
+                    && dangKy.getThanhToan().getGhiChu().contains("vượt giới hạn")) {
+                throw new RuntimeException("Bạn không thể hủy vì đây là sản phẩm cuối cùng của chiến dịch");
+            }
+            
+            if ("Đã kết thúc".equals(cd.getThoiDiem()) && "Thành công".equals(cd.getTrangThai())) {
+                throw new RuntimeException("Chiến dịch đã hoàn thành đạt tối đa số lượng, không thể xóa đơn đăng ký");
+            }
+            
+            dangKyChienDichRepository.deleteById(maDangKy);
+            return true;
+        }
+        return false;
+    }
+    
+    private void refundToWallet(String maNguoiDung, BigDecimal amount, String moTa) {
+        Optional<Wallet> walletOpt = walletRepository.findByNguoiDung_MaNguoiDung(maNguoiDung);
+        Wallet wallet;
+        if (walletOpt.isPresent()) {
+            wallet = walletOpt.get();
+            BigDecimal currentBalance = wallet.getSoDu() != null ? wallet.getSoDu() : BigDecimal.ZERO;
+            wallet.setSoDu(currentBalance.add(amount));
+            wallet = walletRepository.save(wallet);
+        } else {
+            Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findById(maNguoiDung);
+            if (nguoiDungOpt.isPresent()) {
+                wallet = new Wallet();
+                wallet.setNguoiDung(nguoiDungOpt.get());
+                wallet.setSoDu(amount);
+                wallet = walletRepository.save(wallet);
+            } else {
+                return;
+            }
+        }
+        
+        WalletTransaction transaction = new WalletTransaction();
+        transaction.setWallet(wallet);
+        transaction.setLoaiGiaoDich("Hoàn tiền");
+        transaction.setSoTien(amount);
+        transaction.setMoTa(moTa);
+        walletTransactionRepository.save(transaction);
+    }
+    
+    private void guiThongBaoHeThong(String maNguoiDung, String tieuDe, String noiDung) {
+        ThongBao tb = new ThongBao();
+        tb.setMaNguoiDung(maNguoiDung);
+        tb.setTieuDe(tieuDe);
+        tb.setNoiDung(noiDung);
+        tb.setLoaiThongBao("Hệ Thống");
+        tb.setDaDoc(false);
+        thongBaoRepository.save(tb);
+    }
+
+    @org.springframework.transaction.annotation.Transactional
+    public void createOrdersForCampaign(ChienDich chienDich) {
+        List<DangKyChienDich> registrations = dangKyChienDichRepository.findByChienDich_MaChienDich(chienDich.getMaChienDich());
+        
+        // Find price chot based on tiers
+        BigDecimal giaChot = BigDecimal.ZERO;
+        List<BangGiaBacThang> listMucGia = bangGiaBacThangRepository.findByMaChienDichOrderBySoLuongToiThieuAsc(chienDich.getMaChienDich());
+        int totalQty = chienDich.getTongSoLuongHienTai() != null ? chienDich.getTongSoLuongHienTai() : 0;
+        for (BangGiaBacThang bg : listMucGia) {
+            int min = bg.getSoLuongToiThieu() != null ? bg.getSoLuongToiThieu() : 0;
+            int max = bg.getSoLuongToiDa() != null ? bg.getSoLuongToiDa() : Integer.MAX_VALUE;
+            if (totalQty >= min && totalQty <= max) {
+                giaChot = bg.getDonGia();
+                break;
+            }
+        }
+        if (giaChot == null || giaChot.compareTo(BigDecimal.ZERO) == 0) {
+            if (!listMucGia.isEmpty()) {
+                giaChot = listMucGia.get(listMucGia.size() - 1).getDonGia();
+            } else {
+                giaChot = chienDich.getGiaGoc() != null ? chienDich.getGiaGoc() : BigDecimal.ZERO;
+            }
+        }
+
+        int count = 0;
+        for (DangKyChienDich dk : registrations) {
+            if (Boolean.TRUE.equals(dk.getDaHuy())) {
+                continue;
+            }
+            if (donHangRepository.existsByDangKyChienDich_MaDangKy(dk.getMaDangKy())) {
+                continue;
+            }
+            
+            // Generate order ID
+            String maDonHang = generateNextMaDonHang(count++);
+            
+            DonHang dh = new DonHang();
+            dh.setMaDonHang(maDonHang);
+            dh.setDangKyChienDich(dk);
+            dh.setGiaChotCuoiCung(giaChot);
+            dh.setTrangThaiGiaoHang("Đang chuẩn bị");
+            dh.setNgayTaoDon(LocalDateTime.now());
+            
+            // Calculate refund for this registration
+            BangGiaBacThang userBg = dk.getBangGiaBacThang();
+            BigDecimal soTienHoan = BigDecimal.ZERO;
+            boolean userBetCorrect = false;
+            if (userBg != null) {
+                int min = userBg.getSoLuongToiThieu() != null ? userBg.getSoLuongToiThieu() : 0;
+                int max = userBg.getSoLuongToiDa() != null ? userBg.getSoLuongToiDa() : Integer.MAX_VALUE;
+                if (totalQty >= min && totalQty <= max) {
+                    userBetCorrect = true;
+                }
+            }
+            
+            String moTa = "";
+            if (userBetCorrect) {
+                soTienHoan = chienDich.getPhiThamGia() != null ? chienDich.getPhiThamGia() : BigDecimal.ZERO;
+                moTa = "Hoàn tiền - Cược đúng. Chiến dịch " + chienDich.getTenChienDich();
+            } else {
+                soTienHoan = BigDecimal.ZERO;
+                moTa = "Không hoàn tiền - Cược sai. Chiến dịch " + chienDich.getTenChienDich();
+            }
+            
+            dh.setDaHoanTien(true);
+            dh.setSoTienHoanLai(soTienHoan);
+            dh.setNgayHoanTien(LocalDateTime.now());
+            
+            // Build details list (ChiTietDonHang)
+            List<ChiTietDonHang> items = new ArrayList<>();
+            List<PhieuChiTietDangKy> phieus = phieuChiTietDangKyRepository.findByDangKyChienDich_MaDangKy(dk.getMaDangKy());
+            for (PhieuChiTietDangKy p : phieus) {
+                if (p.getMauSac() == null || p.getKichThuoc() == null) continue;
+                ChiTietDonHang ct = new ChiTietDonHang();
+                ct.setDonHang(dh);
+                ct.setMauSac(p.getMauSac());
+                ct.setKichThuoc(p.getKichThuoc());
+                ct.setSoLuong(p.getSoLuong() != null ? p.getSoLuong() : 1);
+                items.add(ct);
+            }
+            dh.setChiTietDonHangs(items);
+            
+            // Save DonHang
+            donHangRepository.save(dh);
+            
+            // Process refund to wallet
+            if (soTienHoan.compareTo(BigDecimal.ZERO) > 0) {
+                refundToWalletWithRegistration(dk.getNguoiDung().getMaNguoiDung(), soTienHoan, moTa, dk);
+            }
+            
+            // Update DangKyChienDich status
+            dk.setDaHoanTien(true);
+            dk.setSoTienHoanLai(soTienHoan);
+            dk.setNgayHoanTien(LocalDateTime.now());
+            dangKyChienDichRepository.save(dk);
+        }
+    }
+
+    private void refundToWalletWithRegistration(String maNguoiDung, BigDecimal amount, String moTa, DangKyChienDich dangKy) {
+        Optional<Wallet> walletOpt = walletRepository.findByNguoiDung_MaNguoiDung(maNguoiDung);
+        Wallet wallet;
+        if (walletOpt.isPresent()) {
+            wallet = walletOpt.get();
+            BigDecimal currentBalance = wallet.getSoDu() != null ? wallet.getSoDu() : BigDecimal.ZERO;
+            wallet.setSoDu(currentBalance.add(amount));
+            wallet = walletRepository.save(wallet);
+        } else {
+            Optional<NguoiDung> nguoiDungOpt = nguoiDungRepository.findById(maNguoiDung);
+            if (nguoiDungOpt.isPresent()) {
+                wallet = new Wallet();
+                wallet.setNguoiDung(nguoiDungOpt.get());
+                wallet.setSoDu(amount);
+                wallet = walletRepository.save(wallet);
+            } else {
+                return;
+            }
+        }
+        
+        WalletTransaction transaction = new WalletTransaction();
+        transaction.setWallet(wallet);
+        transaction.setLoaiGiaoDich("Hoàn tiền");
+        transaction.setSoTien(amount);
+        transaction.setMoTa(moTa);
+        transaction.setDangKyChienDich(dangKy);
+        walletTransactionRepository.save(transaction);
+    }
+
+    private String generateNextMaDonHang(int offset) {
+        List<DonHang> all = donHangRepository.findAll();
+        int max = 0;
+        for (DonHang d : all) {
+            String ma = d.getMaDonHang();
+            if (ma != null && ma.startsWith("DH")) {
+                try {
+                    int n = Integer.parseInt(ma.substring(2));
+                    if (n > max) max = n;
+                } catch (NumberFormatException ignored) {}
+            }
+        }
+        return String.format("DH%03d", max + 1 + offset);
+    }
+
+    private String formatMoney(BigDecimal n) {
+        if (n == null) return "0";
+        return String.format("%,.0f", n.doubleValue()).replace(',', '.');
+    }
+}

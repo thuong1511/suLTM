@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo chiến dịch - Admin EXED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css?v=2000">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-container">
+            <div class="logo">
+                <img src="../images/logo_admin.png" alt="EXED">
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <div class="admin-actions">
+                <button class="notification-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="badge">5</span>
+                </button>
+                <div class="admin-profile">
+                    <img src="../images/rose.jpg" alt="Admin">
+                    <span>Admin User</span>
+                    <div class="admin-dropdown">
+                        <a href="admin-settings.html" class="dropdown-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Cài đặt
+                        </a>
+                        <a href="login.html" class="dropdown-item logout" onclick="localStorage.clear()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin-campaigns.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                    <span>Quản lý chiến dịch</span>
+                </a>
+                <a href="admin-customers.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Quản lý khách hàng</span>
+                </a>
+                <a href="admin-orders.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+                <a href="admin-products.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+                <a href="admin-artists.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <polyline points="17 11 19 13 23 9"></polyline>
+                    </svg>
+                    <span>Nghệ sĩ Collab</span>
+                </a>
+                <a href="admin-settings.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>Cấu hình hệ thống</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="page-header">
+                <h1 id="page-title">TẠO CHIẾN DỊCH MỚI</h1>
+                <button class="btn-back" onclick="history.back()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                    Quay lại
+                </button>
+            </div>
+
+            <form class="campaign-form" id="createCampaignForm">
+                <!-- Basic Info -->
+                <div class="content-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="settings-section-title">Thông tin cơ bản</h2>
+                            <p class="settings-section-desc">Tên, nghệ sĩ, sản phẩm và hình ảnh chiến dịch</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Mã chiến dịch *</label>
+                            <input type="text" id="f-maChienDich" class="form-input" placeholder="CD001" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tên chiến dịch *</label>
+                            <input type="text" id="f-tenChienDich" class="form-input" placeholder="VD: ROSÉ X EXED" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Nghệ sĩ Collab *</label>
+                            <select id="f-maNgheSi" class="form-input" required>
+                                <option value="">Đang tải...</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Sản phẩm *</label>
+                            <select id="f-maSanPham" class="form-input" required>
+                                <option value="">Đang tải...</option>
+                            </select>
+                        </div>
+                        <div class="form-group full-width">
+                            <label>Hình ảnh chiến dịch *</label>
+                            <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('fileInput').click()">
+                                <div class="upload-icon">
+                                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                        <polyline points="17 8 12 3 7 8"></polyline>
+                                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                                    </svg>
+                                </div>
+                                <p class="upload-text">Kéo thả ảnh vào đây hoặc <span class="upload-link">chọn file</span></p>
+                                <p class="upload-hint">JPG, PNG · Tối đa 10MB mỗi file · <strong style="color: var(--accent-gold);">Bắt buộc: 2-3 ảnh</strong></p>
+                                <input type="file" accept="image/*" multiple id="fileInput" style="display:none">
+                            </div>
+                            <div class="image-preview-grid" id="imagePreviewGrid" style="margin-top:12px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pricing -->
+                <div class="content-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="settings-section-title">Giá bậc thang</h2>
+                            <p class="settings-section-desc">Cấu hình mức giá theo số lượng đặt hàng</p>
+                        </div>
+                    </div>
+                    <div class="tier-table">
+                        <div class="tier-header">
+                            <span>Từ SL</span>
+                            <span>Đến SL</span>
+                            <span>Giá (VNĐ)</span>
+                            <span></span>
+                        </div>
+                        <div class="pricing-tiers" id="pricingTiers">
+                            <!-- rows dynamic -->
+                        </div>
+                    </div>
+                    <button type="button" class="btn-add-tier" id="addTierBtn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        Thêm bậc giá
+                    </button>
+                </div>
+
+                <!-- Campaign Settings -->
+                <div class="content-section">
+                    <div class="settings-section-header">
+                        <div class="settings-section-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h2 class="settings-section-title">Cài đặt chiến dịch</h2>
+                            <p class="settings-section-desc">Giá, ngưỡng số lượng, thời gian và trạng thái</p>
+                        </div>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Giá gốc (VNĐ) *</label>
+                            <input type="number" id="f-giaGoc" class="form-input" placeholder="28850000" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phí tham gia (VNĐ) *</label>
+                            <input type="number" id="f-phiThamGia" class="form-input" placeholder="500000" min="0" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ngưỡng MOQ (số lượng tối thiểu) *</label>
+                            <input type="number" id="f-nguongMOQ" class="form-input" placeholder="Tự động từ bậc giá thấp nhất" min="1" readonly style="background-color: #f5f5f5;" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Ngưỡng tối đa *</label>
+                            <input type="number" id="f-nguongToiDa" class="form-input" placeholder="Tự động từ bậc giá cao nhất" min="1" readonly style="background-color: #f5f5f5;" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Thời điểm</label>
+                            <select id="f-thoiDiem" class="form-input">
+                                <option value="Sắp bắt đầu">Sắp bắt đầu</option>
+                                <option value="Đang diễn ra">Đang diễn ra</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="group-trangThai" style="display: none;">
+                            <label>Trạng thái</label>
+                            <select id="f-trangThai" class="form-input">
+                                <option value="">Chưa xác định (Null)</option>
+                                <option value="Thành công">Thành công</option>
+                                <option value="Thất bại">Thất bại</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Thời gian bắt đầu *</label>
+                            <input type="datetime-local" id="f-ngayBatDau" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Thời gian kết thúc *</label>
+                            <input type="datetime-local" id="f-ngayKetThuc" class="form-input" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="campaign-form-actions">
+                    <button type="button" class="btn-secondary-admin" onclick="history.back()">Hủy</button>
+                    <button type="submit" class="btn-primary-admin" id="btn-submit">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        Lưu chiến dịch
+                    </button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="../js/admin-api.js"></script>
+    <script>
+    // ────────────────────────────────────────────────────────────
+    // State
+    // ────────────────────────────────────────────────────────────
+    const params = new URLSearchParams(window.location.search);
+    const mode = params.get('mode');
+    const editingId = params.get('id');
+    const isEdit = mode === 'edit' && editingId;
+
+    /** Ảnh đã upload lên BE (file đã chọn → upload ngay → push vào đây) */
+    const pendingImages = []; // { duongDan, file, isNew: true }
+    /** Ảnh đã có sẵn trong DB (chế độ edit) */
+    const existingImages = []; // { maHinhAnh, duongDan, thuTu }
+
+    // ────────────────────────────────────────────────────────────
+    // Init
+    // ────────────────────────────────────────────────────────────
+    document.addEventListener('DOMContentLoaded', async () => {
+        if (isEdit) {
+            document.getElementById('page-title').textContent = 'CHỈNH SỬA CHIẾN DỊCH';
+            document.title = 'Chỉnh sửa chiến dịch - Admin EXED';
+        }
+
+        // Toggle dropdown profile
+        await initAdminHeader();
+
+        // Load song song dropdown nghệ sĩ + sản phẩm + (nếu edit) dữ liệu CD
+        await Promise.all([loadNgheSi(), loadSanPham()]);
+
+        if (isEdit) {
+            await loadChienDich(editingId);
+        } else {
+            // Sinh mã CD tiếp theo
+            try {
+                const r = await adminApi.getNextMaChienDich();
+                if (r.success) document.getElementById('f-maChienDich').value = r.data;
+            } catch (_) {}
+            addTierRow(); // 1 dòng giá mặc định
+        }
+
+        // Bind events
+        document.getElementById('addTierBtn').addEventListener('click', () => addTierRow());
+        document.getElementById('fileInput').addEventListener('change', onFileSelect);
+        setupDropzone();
+        
+        document.getElementById('f-thoiDiem').addEventListener('change', validateDatesRealTime);
+        document.getElementById('f-ngayBatDau').addEventListener('change', validateDatesRealTime);
+        document.getElementById('f-ngayKetThuc').addEventListener('change', validateDatesRealTime);
+        validateDatesRealTime();
+        
+        document.getElementById('createCampaignForm').addEventListener('submit', onSubmit);
+    });
+
+    // ────────────────────────────────────────────────────────────
+    // Load dropdown
+    // ────────────────────────────────────────────────────────────
+    async function loadNgheSi() {
+        const sel = document.getElementById('f-maNgheSi');
+        try {
+            const r = await adminApi.getAllNgheSi();
+            if (!r.success) throw new Error(r.message);
+            sel.innerHTML = '<option value="">-- Chọn nghệ sĩ --</option>'
+                + r.data.map(ns => `<option value="${ns.maNgheSi}">${ns.tenNgheSi || ns.maNgheSi}</option>`).join('');
+        } catch (e) {
+            sel.innerHTML = '<option value="">Lỗi tải nghệ sĩ</option>';
+        }
+    }
+
+    async function loadSanPham() {
+        const sel = document.getElementById('f-maSanPham');
+        try {
+            const r = await adminApi.getAllSanPham();
+            if (!r.success) throw new Error(r.message);
+            sel.innerHTML = '<option value="">-- Chọn sản phẩm --</option>'
+                + r.data.map(sp => `<option value="${sp.maSanPham}">${sp.maSanPham} - ${sp.tenSanPham || ''}</option>`).join('');
+        } catch (e) {
+            sel.innerHTML = '<option value="">Lỗi tải sản phẩm</option>';
+        }
+    }
+
+    // ────────────────────────────────────────────────────────────
+    // Edit mode: Load chiến dịch hiện có
+    // ────────────────────────────────────────────────────────────
+    async function loadChienDich(id) {
+        try {
+            const r = await adminApi.getChienDichById(id);
+            if (!r.success) { showToast(r.message || 'Không tải được CD', 'error'); return; }
+            const cd = r.data;
+            document.getElementById('f-maChienDich').value = cd.maChienDich || '';
+            document.getElementById('f-maChienDich').readOnly = true; // không cho đổi PK
+            document.getElementById('f-tenChienDich').value = cd.tenChienDich || '';
+            document.getElementById('f-maNgheSi').value = cd.maNgheSi || '';
+            document.getElementById('f-maSanPham').value = cd.maSanPham || '';
+            document.getElementById('f-giaGoc').value = cd.giaGoc || '';
+            document.getElementById('f-phiThamGia').value = cd.phiThamGia || '';
+            document.getElementById('f-nguongMOQ').value = cd.nguongMOQ || '';
+            document.getElementById('f-nguongToiDa').value = cd.nguongToiDa || '';
+            const thoiDiemVal = cd.thoiDiem || 'Sắp bắt đầu';
+            const thoiDiemSelect = document.getElementById('f-thoiDiem');
+            if (thoiDiemVal === 'Đã kết thúc') {
+                const opt = document.createElement('option');
+                opt.value = 'Đã kết thúc';
+                opt.textContent = 'Đã kết thúc';
+                thoiDiemSelect.appendChild(opt);
+            }
+            thoiDiemSelect.value = thoiDiemVal;
+
+            // Hiển thị dropdown trạng thái khi chỉnh sửa
+            document.getElementById('group-trangThai').style.display = 'block';
+            document.getElementById('f-trangThai').value = cd.trangThai !== undefined && cd.trangThai !== null ? cd.trangThai : '';
+            document.getElementById('f-ngayBatDau').value = toDatetimeLocal(cd.ngayBatDau);
+            document.getElementById('f-ngayKetThuc').value = toDatetimeLocal(cd.ngayKetThuc);
+            validateDatesRealTime();
+
+            // Bảng giá
+            const tiersWrap = document.getElementById('pricingTiers');
+            tiersWrap.innerHTML = '';
+            (cd.bangGiaBacThangs || []).forEach(b => addTierRow(b.soLuongToiThieu, b.soLuongToiDa, b.donGia));
+            if (!tiersWrap.children.length) addTierRow();
+            updateMOQAndMax(); // Auto-fill MOQ và Max từ bậc giá đã load
+
+            // Ảnh có sẵn
+            if (cd.hinhAnhChienDichs && cd.hinhAnhChienDichs.length) {
+                cd.hinhAnhChienDichs.forEach(a => existingImages.push({
+                    maHinhAnh: a.maHinhAnh, duongDan: a.duongDan, thuTu: a.thuTu || 1
+                }));
+                renderImagePreview();
+            }
+        } catch (e) {
+            showToast('Lỗi: ' + e.message, 'error');
+        }
+    }
+
+    function toDatetimeLocal(s) {
+        if (!s) return '';
+        // BE trả ISO "2026-03-01T08:00:00" — datetime-local cần dạng "2026-03-01T08:00"
+        return String(s).slice(0, 16);
+    }
+
+    // ────────────────────────────────────────────────────────────
+    // Tier rows
+    // ────────────────────────────────────────────────────────────
+    function addTierRow(min = '', max = '', price = '') {
+        const wrap = document.getElementById('pricingTiers');
+        const row = document.createElement('div');
+        row.className = 'tier-row';
+        row.innerHTML = `
+            <input type="number" class="form-input tier-min" placeholder="Từ" min="0" value="${min}">
+            <input type="number" class="form-input tier-max" placeholder="Đến" min="0" value="${max}">
+            <input type="number" class="form-input tier-price" placeholder="Giá" min="0" value="${price}">
+            <button type="button" class="btn-icon delete" title="Xóa" onclick="this.parentElement.remove(); updateMOQAndMax();">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>`;
+        wrap.appendChild(row);
+        
+        // Bind event để auto-update MOQ/Max khi thay đổi
+        row.querySelectorAll('.tier-min, .tier-max').forEach(input => {
+            input.addEventListener('input', updateMOQAndMax);
+        });
+    }
+
+    // Auto-fill ngưỡng MOQ và tối đa từ bậc giá
+    function updateMOQAndMax() {
+        const rows = document.querySelectorAll('#pricingTiers .tier-row');
+        if (rows.length === 0) {
+            document.getElementById('f-nguongMOQ').value = '';
+            document.getElementById('f-nguongToiDa').value = '';
+            return;
+        }
+        
+        // Tìm min và max từ tất cả các input (kể cả chưa hoàn chỉnh)
+        let minQty = Infinity;
+        let maxQty = -Infinity;
+        
+        rows.forEach(r => {
+            const minVal = parseInt(r.querySelector('.tier-min').value, 10);
+            const maxVal = parseInt(r.querySelector('.tier-max').value, 10);
+            
+            if (Number.isFinite(minVal) && minVal < minQty) minQty = minVal;
+            if (Number.isFinite(maxVal) && maxVal > maxQty) maxQty = maxVal;
+        });
+        
+        if (minQty !== Infinity) document.getElementById('f-nguongMOQ').value = minQty;
+        if (maxQty !== -Infinity) document.getElementById('f-nguongToiDa').value = maxQty;
+    }
+
+    window.updateMOQAndMax = updateMOQAndMax; // Expose để button xóa có thể gọi
+
+    function readTiers() {
+        const rows = document.querySelectorAll('#pricingTiers .tier-row');
+        const tiers = [];
+        rows.forEach(r => {
+            const min = parseInt(r.querySelector('.tier-min').value, 10);
+            const max = parseInt(r.querySelector('.tier-max').value, 10);
+            const price = parseFloat(r.querySelector('.tier-price').value);
+            if (Number.isFinite(min) && Number.isFinite(max) && Number.isFinite(price)) {
+                tiers.push({ soLuongToiThieu: min, soLuongToiDa: max, donGia: price });
+            }
+        });
+        return tiers;
+    }
+
+    // ────────────────────────────────────────────────────────────
+    // Upload ảnh — upload ngay khi chọn để có duongDan thật
+    // ────────────────────────────────────────────────────────────
+    function setupDropzone() {
+        const area = document.getElementById('fileUploadArea');
+        ['dragenter', 'dragover'].forEach(ev => area.addEventListener(ev, e => {
+            e.preventDefault(); e.stopPropagation(); area.style.background = 'rgba(200,169,106,0.1)';
+        }));
+        ['dragleave', 'drop'].forEach(ev => area.addEventListener(ev, e => {
+            e.preventDefault(); e.stopPropagation(); area.style.background = '';
+        }));
+        area.addEventListener('drop', e => {
+            const files = Array.from(e.dataTransfer.files || []).filter(f => f.type.startsWith('image/'));
+            if (files.length) handleFiles(files);
+        });
+    }
+
+    async function onFileSelect(e) {
+        const files = Array.from(e.target.files || []);
+        if (files.length) await handleFiles(files);
+        e.target.value = '';
+    }
+
+    async function handleFiles(files) {
+        // Kiểm tra giới hạn số ảnh: tối đa 3 ảnh
+        const totalImages = existingImages.length + pendingImages.length;
+        const remainingSlots = 3 - totalImages;
+        
+        if (remainingSlots <= 0) {
+            showToast('Chỉ được tải tối đa 3 ảnh chiến dịch!', 'error');
+            return;
+        }
+        
+        if (files.length > remainingSlots) {
+            showToast(`Chỉ có thể tải thêm ${remainingSlots} ảnh nữa (tối đa 3 ảnh)`, 'error');
+            files = files.slice(0, remainingSlots);
+        }
+        
+        for (const f of files) {
+            if (f.size > 10 * 1024 * 1024) {
+                showToast(`File "${f.name}" vượt quá 10MB`, 'error');
+                continue;
+            }
+            try {
+                const r = await adminApi.uploadFile(f, 'chiendich');
+                if (!r.success) {
+                    showToast(r.message || 'Upload thất bại', 'error');
+                    continue;
+                }
+                pendingImages.push({ duongDan: r.data.duongDan, isNew: true });
+            } catch (err) {
+                showToast('Lỗi upload: ' + err.message, 'error');
+            }
+        }
+        renderImagePreview();
+    }
+
+    function renderImagePreview() {
+        const grid = document.getElementById('imagePreviewGrid');
+        const all = [
+            ...existingImages.map(a => ({ kind: 'existing', ...a })),
+            ...pendingImages.map((a, i) => ({ kind: 'new', idx: i, ...a }))
+        ];
+        if (!all.length) {
+            grid.innerHTML = '';
+            return;
+        }
+        grid.innerHTML = all.map(a => {
+            const url = imgUrl(a.duongDan);
+            const removeBtn = a.kind === 'new'
+                ? `<button type="button" class="btn-icon delete" onclick="removeNewImage(${a.idx})" title="Xóa" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);color:#fff;">×</button>`
+                : `<button type="button" class="btn-icon delete" onclick="removeExistingImage(${a.maHinhAnh})" title="Xóa" style="position:absolute;top:6px;right:6px;background:rgba(0,0,0,.6);color:#fff;">×</button>`;
+            return `<div style="position:relative;border-radius:8px;overflow:hidden;border:1px solid #ddd;">
+                <img src="${url}" style="width:100%;height:120px;object-fit:cover;display:block;" alt="">
+                ${removeBtn}
+            </div>`;
+        }).join('');
+    }
+
+    window.removeNewImage = function (idx) {
+        pendingImages.splice(idx, 1);
+        renderImagePreview();
+    };
+
+    window.removeExistingImage = async function (maHinhAnh) {
+        if (!confirm('Xóa ảnh này?')) return;
+        try {
+            const r = await adminApi.xoaHinhAnhChienDich(editingId, maHinhAnh);
+            if (!r.success) { showToast(r.message, 'error'); return; }
+            const i = existingImages.findIndex(x => x.maHinhAnh === maHinhAnh);
+            if (i >= 0) existingImages.splice(i, 1);
+            renderImagePreview();
+            showToast('Đã xóa ảnh');
+        } catch (e) {
+            showToast('Lỗi: ' + e.message, 'error');
+        }
+    };
+
+    function formatLocalDateTime(date) {
+        const pad = (n) => String(n).padStart(2, '0');
+        const yyyy = date.getFullYear();
+        const MM = pad(date.getMonth() + 1);
+        const dd = pad(date.getDate());
+        const hh = pad(date.getHours());
+        const mm = pad(date.getMinutes());
+        return `${yyyy}-${MM}-${dd}T${hh}:${mm}`;
+    }
+
+    function validateDatesRealTime() {
+        const thoiDiem = document.getElementById('f-thoiDiem').value;
+        const ngayBatDauInput = document.getElementById('f-ngayBatDau');
+        const ngayKetThucInput = document.getElementById('f-ngayKetThuc');
+
+        const now = new Date();
+        const nowStr = formatLocalDateTime(now);
+
+        // Reset min/max properties to avoid overlapping conflicts
+        ngayBatDauInput.removeAttribute('min');
+        ngayBatDauInput.removeAttribute('max');
+        ngayKetThucInput.removeAttribute('min');
+        ngayKetThucInput.removeAttribute('max');
+
+        // Clear previous custom validities
+        ngayBatDauInput.setCustomValidity('');
+        ngayKetThucInput.setCustomValidity('');
+
+        const startVal = ngayBatDauInput.value;
+        const endVal = ngayKetThucInput.value;
+
+        if (thoiDiem === 'Sắp bắt đầu') {
+            // start date must be > now
+            ngayBatDauInput.min = nowStr;
+            
+            // end date must be > start date (and at least > now)
+            if (startVal) {
+                ngayKetThucInput.min = startVal;
+                const start = new Date(startVal);
+                if (start <= now) {
+                    ngayBatDauInput.setCustomValidity('Thời điểm "Sắp bắt đầu" yêu cầu thời gian bắt đầu phải lớn hơn thời gian hiện tại!');
+                }
+            } else {
+                ngayKetThucInput.min = nowStr;
+            }
+
+            if (startVal && endVal) {
+                const start = new Date(startVal);
+                const end = new Date(endVal);
+                if (end <= start) {
+                    ngayKetThucInput.setCustomValidity('Thời gian kết thúc phải lớn hơn thời gian bắt đầu!');
+                }
+            }
+        } else if (thoiDiem === 'Đang diễn ra') {
+            // start date must be <= now, so max of start date is now
+            ngayBatDauInput.max = nowStr;
+            
+            // end date must be >= now, so min of end date is now
+            ngayKetThucInput.min = nowStr;
+            
+            if (startVal) {
+                const start = new Date(startVal);
+                if (start > now) {
+                    ngayBatDauInput.setCustomValidity('Thời điểm "Đang diễn ra" yêu cầu thời gian bắt đầu phải nhỏ hơn hoặc bằng thời gian hiện tại!');
+                }
+                const startValLocal = startVal;
+                if (new Date(startValLocal) > now) {
+                    ngayKetThucInput.min = startValLocal;
+                } else {
+                    ngayKetThucInput.min = nowStr;
+                }
+            }
+
+            if (endVal) {
+                const end = new Date(endVal);
+                if (end < now) {
+                    ngayKetThucInput.setCustomValidity('Thời điểm "Đang diễn ra" yêu cầu thời gian kết thúc phải lớn hơn hoặc bằng thời gian hiện tại!');
+                }
+            }
+
+            if (startVal && endVal) {
+                const start = new Date(startVal);
+                const end = new Date(endVal);
+                if (end <= start) {
+                    ngayKetThucInput.setCustomValidity('Thời gian kết thúc phải lớn hơn thời gian bắt đầu!');
+                }
+            }
+        } else if (thoiDiem === 'Đã kết thúc') {
+            // end date must be < now
+            ngayKetThucInput.max = nowStr;
+            
+            if (endVal) {
+                ngayBatDauInput.max = endVal;
+                const end = new Date(endVal);
+                if (end >= now) {
+                    ngayKetThucInput.setCustomValidity('Thời điểm "Đã kết thúc" yêu cầu thời gian kết thúc phải nhỏ hơn thời gian hiện tại!');
+                }
+            } else {
+                ngayBatDauInput.max = nowStr;
+            }
+
+            if (startVal && endVal) {
+                const start = new Date(startVal);
+                const end = new Date(endVal);
+                if (end <= start) {
+                    ngayKetThucInput.setCustomValidity('Thời gian kết thúc phải lớn hơn thời gian bắt đầu!');
+                }
+            }
+        }
+    }
+
+    // ────────────────────────────────────────────────────────────
+    // Submit
+    // ────────────────────────────────────────────────────────────
+    async function onSubmit(e) {
+        e.preventDefault();
+
+        const fTrangThai = document.getElementById('f-trangThai').value;
+        const payload = {
+            maChienDich: document.getElementById('f-maChienDich').value.trim().toUpperCase(),
+            tenChienDich: document.getElementById('f-tenChienDich').value.trim(),
+            maNgheSi: document.getElementById('f-maNgheSi').value,
+            maSanPham: document.getElementById('f-maSanPham').value,
+            giaGoc: parseFloat(document.getElementById('f-giaGoc').value) || 0,
+            phiThamGia: parseFloat(document.getElementById('f-phiThamGia').value) || 0,
+            nguongMOQ: parseInt(document.getElementById('f-nguongMOQ').value, 10) || 0,
+            nguongToiDa: parseInt(document.getElementById('f-nguongToiDa').value, 10) || 0,
+            nguoiThamGia: 0, // Mặc định 0 khi tạo mới
+            thoiDiem: document.getElementById('f-thoiDiem').value,
+            trangThai: fTrangThai ? fTrangThai : null,
+            ngayBatDau: document.getElementById('f-ngayBatDau').value || null,
+            ngayKetThuc: document.getElementById('f-ngayKetThuc').value || null,
+            bangGiaBacThangs: readTiers()
+        };
+
+        // Validate
+        if (!payload.maChienDich) return showToast('Thiếu mã chiến dịch', 'error');
+        if (!payload.tenChienDich) return showToast('Thiếu tên chiến dịch', 'error');
+        if (!payload.maNgheSi) return showToast('Chưa chọn nghệ sĩ', 'error');
+        if (!payload.maSanPham) return showToast('Chưa chọn sản phẩm', 'error');
+        if (!payload.ngayBatDau || !payload.ngayKetThuc) return showToast('Thiếu thời gian', 'error');
+        if (payload.nguongToiDa < payload.nguongMOQ) return showToast('Ngưỡng tối đa phải >= MOQ', 'error');
+
+        // Validate date/time logic based on thoiDiem
+        const now = new Date();
+        const start = new Date(payload.ngayBatDau);
+        const end = new Date(payload.ngayKetThuc);
+        
+        if (payload.thoiDiem === 'Sắp bắt đầu') {
+            if (start <= now) {
+                return showToast('Thời điểm "Sắp bắt đầu" yêu cầu thời gian bắt đầu phải lớn hơn thời gian hiện tại!', 'error');
+            }
+            if (end <= start) {
+                return showToast('Thời gian kết thúc phải lớn hơn thời gian bắt đầu!', 'error');
+            }
+        } else if (payload.thoiDiem === 'Đang diễn ra') {
+            if (now < start || now > end) {
+                return showToast('Thời điểm "Đang diễn ra" yêu cầu thời gian hiện tại phải nằm trong khoảng thời gian bắt đầu và kết thúc!', 'error');
+            }
+            if (end <= start) {
+                return showToast('Thời gian kết thúc phải lớn hơn thời gian bắt đầu!', 'error');
+            }
+        }
+        
+        // Validate số lượng ảnh: 2-3 ảnh
+        const totalImages = existingImages.length + pendingImages.length;
+        if (totalImages < 2) {
+            return showToast('Vui lòng tải lên tối thiểu 2 ảnh chiến dịch!', 'error');
+        }
+        if (totalImages > 3) {
+            return showToast('Chỉ được tải tối đa 3 ảnh chiến dịch!', 'error');
+        }
+
+        const btn = document.getElementById('btn-submit');
+        btn.disabled = true;
+
+        try {
+            let res;
+            let savedId = payload.maChienDich;
+            if (isEdit) {
+                res = await adminApi.updateChienDich(editingId, payload);
+                savedId = editingId;
+            } else {
+                res = await adminApi.createChienDich(payload);
+            }
+            if (!res.success) {
+                showToast(res.message || 'Lưu thất bại', 'error');
+                btn.disabled = false;
+                return;
+            }
+
+            // Gắn ảnh mới (nếu có)
+            for (let i = 0; i < pendingImages.length; i++) {
+                const img = pendingImages[i];
+                await adminApi.themHinhAnhChienDich(savedId, img.duongDan, i + 1);
+            }
+
+            showToast(isEdit ? 'Cập nhật thành công' : 'Tạo chiến dịch thành công');
+            setTimeout(() => { window.location.href = 'admin-campaigns.html'; }, 700);
+        } catch (e) {
+            showToast('Lỗi: ' + e.message, 'error');
+            btn.disabled = false;
+        }
+    }
+    </script>
+</body>
+</html>
+

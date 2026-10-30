@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - EXED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/login.css">
+</head>
+<body>
+    <!-- Auth Container -->
+    <div class="auth-container signup-container">
+        <div class="signup-header">
+            <h1 class="auth-title">Đăng ký tài khoản</h1>
+            <p class="auth-subtitle">Tạo tài khoản để trải nghiệm mua sắm cùng nghệ sĩ</p>
+        </div>
+        
+        <form id="signupForm">
+            <div class="form-grid">
+                <div class="form-group">
+                    <input 
+                        type="text" 
+                        id="tenDangNhap"
+                        class="form-input" 
+                        placeholder="Tên đăng nhập"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <input 
+                        type="email" 
+                        id="email"
+                        class="form-input" 
+                        placeholder="Email"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <input 
+                        type="tel" 
+                        id="soDienThoai"
+                        class="form-input" 
+                        placeholder="Số điện thoại"
+                        required
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <select 
+                        id="gioiTinh"
+                        class="form-input" 
+                        required
+                    >
+                        <option value="">Giới tính</option>
+                        <option value="Nam">Nam</option>
+                        <option value="Nữ">Nữ</option>
+                        <option value="Khác">Khác</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <input 
+                        type="password" 
+                        id="matKhau"
+                        class="form-input" 
+                        placeholder="Mật khẩu (tối thiểu 6 ký tự)"
+                        required
+                        minlength="6"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <input 
+                        type="password" 
+                        id="xacNhanMatKhau"
+                        class="form-input" 
+                        placeholder="Xác nhận mật khẩu"
+                        required
+                        minlength="6"
+                    >
+                </div>
+            </div>
+            
+            <button type="submit" class="btn-primary">Đăng ký ngay</button>
+        </form>
+        
+        <div class="divider">Hoặc đăng ký với</div>
+        
+        <div class="social-buttons">
+            <button class="btn-social" disabled title="Tính năng đang phát triển">
+                <img src="https://www.google.com/favicon.ico" alt="Google" width="20" height="20">
+                Google
+            </button>
+            
+            <button class="btn-social" disabled title="Tính năng đang phát triển">
+                <img src="https://www.facebook.com/favicon.ico" alt="Facebook" width="20" height="20">
+                Facebook
+            </button>
+        </div>
+        
+        <p class="bottom-text">
+            Đã có tài khoản? <a href="login.html" class="bottom-link">Đăng nhập ngay</a>
+        </p>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="../js/api.js"></script>
+    <script src="../js/signup.js"></script>
+</body>
+</html>

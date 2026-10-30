@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý sản phẩm - Admin EXED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css?v=2000">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-container">
+            <div class="logo">
+                <img src="../images/logo_admin.png" alt="EXED">
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <div class="admin-actions">
+                <button class="notification-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="badge">5</span>
+                </button>
+                <div class="admin-profile">
+                    <img src="../images/rose.jpg" alt="Admin">
+                    <span>Admin User</span>
+                    <div class="admin-dropdown">
+                        <a href="admin-settings.html" class="dropdown-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Cài đặt
+                        </a>
+                        <a href="login.html" class="dropdown-item logout" onclick="localStorage.clear()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin-campaigns.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                    <span>Quản lý chiến dịch</span>
+                </a>
+                <a href="admin-customers.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Quản lý khách hàng</span>
+                </a>
+                <a href="admin-orders.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+                <a href="admin-products.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+                <a href="admin-artists.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <polyline points="17 11 19 13 23 9"></polyline>
+                    </svg>
+                    <span>Nghệ sĩ Collab</span>
+                </a>
+                <a href="admin-settings.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>Cấu hình hệ thống</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="page-header">
+                <h1>QUẢN LÝ SẢN PHẨM</h1>
+                <button class="btn-primary-admin" onclick="window.location.href='admin-create-product.html'">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    Thêm sản phẩm mới
+                </button>
+            </div>
+
+            <!-- Filter Bar -->
+            <div class="content-section">
+                <div class="filter-bar-admin">
+                    <div class="filter-group-admin">
+                        <label>Danh mục</label>
+                        <select class="filter-select-admin">
+                            <option value="">Tất cả</option>
+                            <option value="ao">Áo</option>
+                            <option value="giay">Giày</option>
+                        </select>
+                    </div>
+                    <div class="filter-group-admin">
+                        <label>Tìm kiếm</label>
+                        <input type="text" placeholder="Tên sản phẩm..." class="filter-input-admin">
+                    </div>
+                    <button class="btn-secondary-admin">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <path d="m21 21-4.35-4.35"></path>
+                        </svg>
+                        Tìm kiếm
+                    </button>
+                </div>
+            </div>
+
+            <!-- Product Table -->
+            <div class="content-section">
+                <div class="table-container">
+                    <table class="admin-table">
+                        <thead>
+                            <tr>
+                                <th>Mã SP</th>
+                                <th>Tên sản phẩm</th>
+                                <th>Danh mục</th>
+                                <th>Màu sắc</th>
+                                <th>Kích thước</th>
+                                <th>Số lượng hình ảnh</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="products-tbody">
+                            <tr><td colspan="7" style="text-align:center;padding:30px;">Đang tải...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/admin-api.js"></script>
+    <script>
+    let allSanPham = [];
+
+    document.addEventListener('DOMContentLoaded', async function () {
+        await Promise.all([loadSanPham(), loadDanhMucDropdown()]);
+        setupFilters();
+    });
+
+    async function loadDanhMucDropdown() {
+        const sel = document.querySelector('.filter-select-admin');
+        if (!sel) return;
+        try {
+            const r = await adminApi.getAllDanhMuc();
+            if (!r.success) return;
+            sel.innerHTML = '<option value="">Tất cả</option>'
+                + (r.data || []).map(dm => `<option value="${dm.maDanhMuc}">${dm.tenDanhMuc}</option>`).join('');
+        } catch (_) {}
+    }
+
+    async function loadSanPham() {
+        const tbody = document.getElementById('products-tbody');
+        tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:30px;">Đang tải...</td></tr>';
+        try {
+            const res = await adminApi.getAllSanPham();
+            if (!res.success) {
+                tbody.innerHTML = `<tr><td colspan="7" style="text-align:center;color:red;">${res.message}</td></tr>`;
+                return;
+            }
+            allSanPham = res.data;
+            renderTable(allSanPham);
+        } catch (e) {
+            document.getElementById('products-tbody').innerHTML =
+                `<tr><td colspan="7" style="text-align:center;color:red;">Lỗi kết nối BE: ${e.message}</td></tr>`;
+        }
+    }
+
+    function renderTable(list) {
+        const tbody = document.getElementById('products-tbody');
+        if (!list.length) {
+            tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:30px;">Không có dữ liệu</td></tr>';
+            return;
+        }
+        tbody.innerHTML = list.map(sp => {
+            const img = imgSanPham(sp);
+            const mauSacs = sp.sanPhamMauSacs?.map(m => m.mauSac?.tenMau || m.maMau).join(', ') || '—';
+            const kichThuocs = sp.sanPhamKichThuocs?.map(k => k.kichThuoc?.tenSize || k.maSize).join(', ') || '—';
+            const soAnh = sp.hinhAnhSanPhams?.length || 0;
+            return `
+            <tr>
+                <td><strong>${sp.maSanPham}</strong></td>
+                <td>
+                    <div class="campaign-cell">
+                        <img src="${img}" alt="${sp.tenSanPham}" onerror="this.onerror=null; this.src='../images/banner.png';">
+                        <span>${sp.tenSanPham}</span>
+                    </div>
+                </td>
+                <td>${sp.danhMuc?.tenDanhMuc || sp.maDanhMuc || '—'}</td>
+                <td><small>${mauSacs}</small></td>
+                <td><small>${kichThuocs}</small></td>
+                <td>${soAnh} ảnh</td>
+                <td>
+                    <div class="action-buttons">
+                        <button class="btn-icon edit" title="Chỉnh sửa" onclick="window.location.href='admin-create-product.html?id=${sp.maSanPham}&mode=edit'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                            </svg>
+                        </button>
+                        <button class="btn-icon view" title="Xem chi tiết" onclick="window.location.href='admin-product-detail.html?id=${sp.maSanPham}'">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                        <button class="btn-icon delete" title="Xóa" onclick="deleteSanPham('${sp.maSanPham}', '${sp.tenSanPham}')">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    function setupFilters() {
+        const selDanhMuc = document.querySelector('.filter-select-admin');
+        const inputSearch = document.querySelector('.filter-input-admin');
+        const btnSearch = document.querySelector('.btn-secondary-admin');
+
+        const apply = () => {
+            const dm = selDanhMuc?.value || '';
+            const q = inputSearch?.value.toLowerCase() || '';
+            const filtered = allSanPham.filter(sp => {
+                if (dm && sp.maDanhMuc !== dm) return false;
+                if (q && !sp.tenSanPham?.toLowerCase().includes(q) &&
+                         !sp.maSanPham?.toLowerCase().includes(q)) return false;
+                return true;
+            });
+            renderTable(filtered);
+        };
+
+        selDanhMuc?.addEventListener('change', apply);
+        btnSearch?.addEventListener('click', apply);
+        inputSearch?.addEventListener('keydown', e => { if (e.key === 'Enter') apply(); });
+    }
+
+    async function deleteSanPham(id, ten) {
+        if (!confirm(`Xóa sản phẩm "${ten}"?`)) return;
+        try {
+            const res = await adminApi.deleteSanPham(id);
+            if (res.success) { showToast('Đã xóa sản phẩm'); await loadSanPham(); }
+            else showToast(res.message, 'error');
+        } catch (e) { showToast('Lỗi kết nối', 'error'); }
+    }
+    </script>
+</body>
+</html>

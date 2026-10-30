@@ -1,0 +1,418 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - EXED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css?v=2000">
+</head>
+<body>
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-container">
+            <div class="logo">
+                <img src="../images/logo_admin.png" alt="EXED">
+                <span class="admin-badge">ADMIN</span>
+            </div>
+            <div class="admin-actions">
+                <button class="notification-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+                    </svg>
+                    <span class="badge">5</span>
+                </button>
+                <div class="admin-profile">
+                    <img src="../images/rose.jpg" alt="Admin">
+                    <span>Admin User</span>
+                    <div class="admin-dropdown">
+                        <a href="admin-settings.html" class="dropdown-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                            Cài đặt
+                        </a>
+                        <a href="login.html" class="dropdown-item logout" onclick="localStorage.clear()">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                                <polyline points="16 17 21 12 16 7"></polyline>
+                                <line x1="21" y1="12" x2="9" y2="12"></line>
+                            </svg>
+                            Đăng xuất
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <nav class="sidebar-nav">
+                <a href="admin-dashboard.html" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="admin-campaigns.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                    </svg>
+                    <span>Quản lý chiến dịch</span>
+                </a>
+                <a href="admin-customers.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    <span>Quản lý khách hàng</span>
+                </a>
+                <a href="admin-orders.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                    <span>Quản lý đơn hàng</span>
+                </a>
+                <a href="admin-products.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                    </svg>
+                    <span>Quản lý sản phẩm</span>
+                </a>
+                <a href="admin-artists.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="8.5" cy="7" r="4"></circle>
+                        <polyline points="17 11 19 13 23 9"></polyline>
+                    </svg>
+                    <span>Nghệ sĩ Collab</span>
+                </a>
+                <a href="admin-settings.html" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                    </svg>
+                    <span>Cấu hình hệ thống</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <div class="page-header">
+                <h1>DASHBOARD & BÁO CÁO THỐNG KÊ</h1>
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn-secondary-admin" id="btn-export-pdf">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Xuất PDF
+                    </button>
+                    <button class="btn-secondary-admin" id="btn-export-excel">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        Xuất Excel
+                    </button>
+                </div>
+            </div>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon revenue">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <line x1="12" y1="1" x2="12" y2="23"></line>
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Doanh thu tháng này</h3>
+                        <p class="stat-value">2.450.000.000 đ</p>
+                        <span class="stat-change positive">+12.5% so với tháng trước</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon campaigns">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Chiến dịch thành công</h3>
+                        <p class="stat-value">15/18</p>
+                        <span class="stat-change positive">Tỷ lệ: 83.3%</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon users">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="9" cy="7" r="4"></circle>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Khách hàng cược đúng</h3>
+                        <p class="stat-value">1,856/2,340</p>
+                        <span class="stat-change positive">Tỷ lệ: 79.3%</span>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon orders">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                        </svg>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Tổng hoàn tiền</h3>
+                        <p class="stat-value">485.000.000 đ</p>
+                        <span class="stat-change">Tháng này</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts -->
+            <div class="content-section">
+                <h2 class="section-title">Biểu đồ doanh thu theo tháng</h2>
+                <div style="position:relative;height:320px;background:linear-gradient(135deg, rgba(236, 234, 229, 0.3), rgba(236, 234, 229, 0.1));border-radius:15px;padding:20px;">
+                    <canvas id="chart-doanhthu"></canvas>
+                </div>
+            </div>
+
+            <!-- Top Campaigns -->
+            <div class="content-section">
+                <h2 class="section-title">Top chiến dịch doanh thu cao nhất</h2>
+                <table class="admin-table" id="top-campaigns-table">
+                    <thead>
+                        <tr>
+                            <th>Xếp hạng</th>
+                            <th>Chiến dịch</th>
+                            <th>Nghệ sĩ</th>
+                            <th>Số lượng bán</th>
+                            <th>Doanh thu</th>
+                        </tr>
+                    </thead>
+                    <tbody id="top-campaigns-tbody">
+                        <tr><td colspan="5" style="text-align:center;padding:30px;">Đang tải...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Recent Orders -->
+            <div class="content-section">
+                <div class="section-header">
+                    <h2>ĐƠN HÀNG GẦN ĐÂY</h2>
+                    <button class="btn-secondary-admin" onclick="window.location.href='admin-orders.html'">Xem tất cả</button>
+                </div>
+
+                <div class="orders-grid" id="recent-orders-grid">
+                    <p style="grid-column:1/-1;text-align:center;padding:30px;color:#888;">Đang tải...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="../js/admin-api.js"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+
+        await initAdminHeader();
+
+        // ── Nút xuất file ───────────────────────────────────────
+        const btnExcel = document.getElementById('btn-export-excel');
+        if (btnExcel) btnExcel.addEventListener('click', () => {
+            window.location.href = adminApi.exportDashboardExcelUrl();
+        });
+        const btnPdf = document.getElementById('btn-export-pdf');
+        if (btnPdf) btnPdf.addEventListener('click', () => {
+            window.open(adminApi.exportDashboardPdfUrl(), '_blank');
+        });
+
+        // ── 1. Stats tổng quan ──────────────────────────────────
+        try {
+            const res = await adminApi.getDashboard();
+            if (res.success) {
+                const d = res.data;
+                document.querySelector('.stat-card:nth-child(1) .stat-value').textContent = fmtMoney(d.doanhThuThangNay);
+                const pct = d.phanTramDoanhThu;
+                const pctEl = document.querySelector('.stat-card:nth-child(1) .stat-change');
+                pctEl.textContent = (pct >= 0 ? '+' : '') + pct + '% so với tháng trước';
+                pctEl.className = 'stat-change ' + (pct >= 0 ? 'positive' : 'negative');
+
+                document.querySelector('.stat-card:nth-child(2) .stat-value').textContent =
+                    `${d.chienDichThanhCong}/${d.tongChienDich}`;
+                document.querySelector('.stat-card:nth-child(2) .stat-change').textContent =
+                    `Tỷ lệ: ${d.tyLeChienDich}%`;
+
+                document.querySelector('.stat-card:nth-child(3) .stat-value').textContent =
+                    `${Number(d.khachHangCuocDung).toLocaleString('vi-VN')}/${Number(d.tongKhachHang).toLocaleString('vi-VN')}`;
+                document.querySelector('.stat-card:nth-child(3) .stat-change').textContent =
+                    `Tỷ lệ: ${d.tyLeKhachHang}%`;
+
+                document.querySelector('.stat-card:nth-child(4) .stat-value').textContent = fmtMoney(d.tongHoanTien);
+            }
+        } catch (e) { console.error('Dashboard API error:', e); }
+
+        // ── 2. Biểu đồ doanh thu 12 tháng ───────────────────────
+        try {
+            const res = await adminApi.getDoanhThuTheoThang(12);
+            if (res.success) {
+                renderDoanhThuChart(res.data);
+            }
+        } catch (e) { console.error('DoanhThu API error:', e); }
+
+        // ── 3. Top chiến dịch ───────────────────────────────────
+        try {
+            const res = await adminApi.getTopChienDich(5);
+            const tbody = document.getElementById('top-campaigns-tbody');
+            if (!res.success || !res.data.length) {
+                tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px;color:#888;">Chưa có dữ liệu</td></tr>';
+            } else {
+                tbody.innerHTML = res.data.map(t => `
+                    <tr>
+                        <td><strong>${t.xepHang}</strong></td>
+                        <td>${t.tenChienDich || '—'}</td>
+                        <td>${t.tenNgheSi || '—'}</td>
+                        <td>${Number(t.soLuongBan || 0).toLocaleString('vi-VN')}</td>
+                        <td>${fmtMoney(t.doanhThu)}</td>
+                    </tr>`).join('');
+            }
+        } catch (e) {
+            console.error('TopChienDich API error:', e);
+            document.getElementById('top-campaigns-tbody').innerHTML =
+                '<tr><td colspan="5" style="text-align:center;color:red;">Lỗi tải dữ liệu</td></tr>';
+        }
+
+        // ── 4. Đơn hàng gần đây ─────────────────────────────────
+        try {
+            const res = await adminApi.getDonHangGanDay(6);
+            const grid = document.getElementById('recent-orders-grid');
+            if (!res.success || !res.data.length) {
+                grid.innerHTML = '<p style="grid-column:1/-1;text-align:center;padding:30px;color:#888;">Chưa có đơn hàng</p>';
+            } else {
+                grid.innerHTML = res.data.map(o => {
+                    const cls = o.trangThai === 'Đã hủy' ? 'failed'
+                              : o.trangThai === 'Đã hoàn tiền' ? 'pending'
+                              : 'success';
+                    return `
+                    <div class="order-card-mini">
+                        <div class="order-header-mini">
+                            <span class="order-id-mini">#DK${o.maDangKy}</span>
+                            <span class="order-status-mini ${cls}">${o.trangThai}</span>
+                        </div>
+                        <div class="order-info-mini">
+                            <p><strong>Khách hàng:</strong> ${o.tenKhachHang || '—'}</p>
+                            <p><strong>Chiến dịch:</strong> ${o.tenChienDich || '—'}</p>
+                            <p><strong>Số tiền:</strong> ${fmtMoney(o.soTienThanhToan)}</p>
+                        </div>
+                        <div class="order-footer-mini">
+                            <span>${fmtDate(o.ngayDangKy)}</span>
+                            <button class="btn-link" onclick="window.location.href='admin-order-detail.html?id=${o.maDangKy}'">Chi tiết →</button>
+                        </div>
+                    </div>`;
+                }).join('');
+            }
+        } catch (e) {
+            console.error('DonHangGanDay API error:', e);
+            document.getElementById('recent-orders-grid').innerHTML =
+                '<p style="grid-column:1/-1;text-align:center;color:red;">Lỗi tải dữ liệu</p>';
+        }
+    });
+
+    /** Vẽ biểu đồ doanh thu theo tháng (Chart.js) */
+    function renderDoanhThuChart(data) {
+        const ctx = document.getElementById('chart-doanhthu');
+        if (!ctx || typeof Chart === 'undefined') return;
+        const labels = data.map(d => d.nhan);
+        const doanhThu = data.map(d => Number(d.doanhThu) || 0);
+        const soDon = data.map(d => Number(d.soDon) || 0);
+
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels,
+                datasets: [
+                    {
+                        label: 'Doanh thu (VNĐ)',
+                        data: doanhThu,
+                        backgroundColor: 'rgba(200, 169, 106, 0.6)',
+                        borderColor: 'rgba(200, 169, 106, 1)',
+                        borderWidth: 1,
+                        yAxisID: 'y'
+                    },
+                    {
+                        label: 'Số đơn',
+                        data: soDon,
+                        type: 'line',
+                        borderColor: '#3a3a3a',
+                        backgroundColor: '#3a3a3a',
+                        tension: 0.3,
+                        yAxisID: 'y1'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: { mode: 'index', intersect: false },
+                plugins: {
+                    legend: { position: 'top' },
+                    tooltip: {
+                        callbacks: {
+                            label: function(c) {
+                                if (c.dataset.yAxisID === 'y') {
+                                    return c.dataset.label + ': ' + Number(c.parsed.y).toLocaleString('vi-VN') + ' đ';
+                                }
+                                return c.dataset.label + ': ' + c.parsed.y;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                        ticks: {
+                            callback: v => Number(v).toLocaleString('vi-VN')
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        beginAtZero: true,
+                        grid: { drawOnChartArea: false }
+                    }
+                }
+            }
+        });
+    }
+    </script>
+</body>
+</html>
+
